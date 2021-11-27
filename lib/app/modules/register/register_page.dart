@@ -18,119 +18,113 @@ class RegisterPage extends StatelessWidget{
           SizedBox(
             height: 22,
           ),
-          InputText(
-              label: 'NIK',
-              hinttext: 'Nomor Induk Kependuduk',
-              iconInput: Icon(Icons.people),
-              password: false,
-              width: MediaQuery.of(context).size.width - 40,
-          ),
-          SizedBox(
-            height: 15,
-          ),
-          Row(
-            children: [
-              InputText(
-                  label: 'First Name',
-                  hinttext: 'First Name',
-                  iconInput: null,
-                  password: false,
-                  width: (MediaQuery.of(context).size.width - 50)/2,
-              ),
-              SizedBox(
-                width: 10,
-              ),
-              InputText(
-                  label: 'Last Name',
-                  hinttext: 'Last Name',
-                  iconInput: null,
-                  password: false,
-                  width: (MediaQuery.of(context).size.width - 50) / 2,
-              ),
-            ],
-          ),
-          SizedBox(
-            height: 15,
-          ),
-          InputText(
-            label: "Address",
-            hinttext: "Address",
-            iconInput: Icon(Icons.search),
-            password: false,
-            width: MediaQuery.of(context).size.width - 40,
-          ),
-          SizedBox(
-            height: 15,
-          ),
-          Row(
-            children: [
-              InputText(
-                label: "ZipCode",
-                hinttext: "Zip Code",
-                iconInput: null,
-                password: false,
-                width: (MediaQuery.of(context).size.width - 60) / 2,
-              ),
-              SizedBox(
-                width: 10,
-              ),
-              InputText(
-                label: "City",
-                hinttext: "City",
-                iconInput: null,
-                password: false,
-                width: (MediaQuery.of(context).size.width - 60) / 2,
-              ),
-              SizedBox(
-                width: 10,
-              ),
-            ],
-          ),
-          SizedBox(
-            height: 15,
-          ),
-          InputText(
-            label: "E-mail address",
-            hinttext: "e-mail",
-            iconInput: Icon(Icons.email),
-            password: false,
-            width: MediaQuery.of(context).size.width - 40,
-          ),
-          SizedBox(
-            height: 15,
-          ),
-          InputText(
-            label: "Password",
-            hinttext: "Password",
-            iconInput: Icon(Icons.lock),
-            password: true,
-            width: MediaQuery.of(context).size.width - 40,
-          ),
-          SizedBox(
-            height: 15,
-          ),
-          InputText(
-            label: "Confirm Password",
-            hinttext: "Confirm Password",
-            iconInput: Icon(Icons.lock),
-            password: true,
-            width: MediaQuery.of(context).size.width - 40,
-          ),
+          // InputText(
+          //     label: 'NIK',
+          //     hinttext: 'Nomor Induk Kependuduk',
+          //     iconInput: Icon(Icons.people),
+          //     password: false,
+          //     width: MediaQuery.of(context).size.width - 40,
+          // ),
+          // SizedBox(
+          //   height: 15,
+          // ),
+          // Row(
+          //   children: [
+          //     InputText(
+          //         label: 'First Name',
+          //         hinttext: 'First Name',
+          //         iconInput: null,
+          //         password: false,
+          //         width: (MediaQuery.of(context).size.width - 50)/2,
+          //     ),
+          //     SizedBox(
+          //       width: 10,
+          //     ),
+          //     InputText(
+          //         label: 'Last Name',
+          //         hinttext: 'Last Name',
+          //         iconInput: null,
+          //         password: false,
+          //         width: (MediaQuery.of(context).size.width - 50) / 2,
+          //     ),
+          //   ],
+          // ),
+          // SizedBox(
+          //   height: 15,
+          // ),
+          // InputText(
+          //   label: "Address",
+          //   hinttext: "Address",
+          //   iconInput: Icon(Icons.search),
+          //   password: false,
+          //   width: MediaQuery.of(context).size.width - 40,
+          // ),
+          // SizedBox(
+          //   height: 15,
+          // ),
+          // Row(
+          //   children: [
+          //     InputText(
+          //       label: "ZipCode",
+          //       hinttext: "Zip Code",
+          //       iconInput: null,
+          //       password: false,
+          //       width: (MediaQuery.of(context).size.width - 60) / 2,
+          //     ),
+          //     SizedBox(
+          //       width: 10,
+          //     ),
+          //     InputText(
+          //       label: "City",
+          //       hinttext: "City",
+          //       iconInput: null,
+          //       password: false,
+          //       width: (MediaQuery.of(context).size.width - 60) / 2,
+          //     ),
+          //     SizedBox(
+          //       width: 10,
+          //     ),
+          //   ],
+          // ),
+          // SizedBox(
+          //   height: 15,
+          // ),
+          // InputText(
+          //   label: "E-mail address",
+          //   hinttext: "e-mail",
+          //   iconInput: Icon(Icons.email),
+          //   password: false,
+          //   width: MediaQuery.of(context).size.width - 40,
+          // ),
+          // SizedBox(
+          //   height: 15,
+          // ),
+          // InputText(
+          //   label: "Password",
+          //   hinttext: "Password",
+          //   iconInput: Icon(Icons.lock),
+          //   password: true,
+          //   width: MediaQuery.of(context).size.width - 40,
+          // ),
+          // SizedBox(
+          //   height: 15,
+          // ),
+          // InputText(
+          //   label: "Confirm Password",
+          //   hinttext: "Confirm Password",
+          //   iconInput: Icon(Icons.lock),
+          //   password: true,
+          //   width: MediaQuery.of(context).size.width - 40,
+          // ),
           SizedBox(
             height: 47,
           ),
           Center(
             child: BtnGradient(
-              text: Text(
-                "REGISTER",
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white,
-                ),
-              ),
+              text: "REGISTER",
               width: MediaQuery.of(context).size.width - 86,
               border: BorderRadius.circular(6),
-              proses: () => Get.offNamed(Routes.LOGIN),
+              onPressed: () => Get.offNamed(Routes.LOGIN),
             ),
           ),
           SizedBox(
@@ -143,7 +137,7 @@ class RegisterPage extends StatelessWidget{
               GestureDetector(
                 onTap: () => Get.offNamed(Routes.LOGIN),
                 child: Text(
-                  "Sign Up",
+                  "Sign In",
                   style: TextStyle(
                     fontSize: 12,
                     color: blueColor,

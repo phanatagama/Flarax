@@ -72,16 +72,10 @@ class GetStarted extends StatelessWidget{
             height: height / 10,
           ),
           BtnGradient(
-            text: Text(
-              "Get Started",
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 14,
-              ),
-            ),
+            text: "Get Started",
             width: width - 208,
             border: BorderRadius.circular(50),
-            proses: () => Get.offNamed(Routes.LOGIN),
+            onPressed: () => Get.offNamed(Routes.LOGIN),
           ),
         ],
       ),

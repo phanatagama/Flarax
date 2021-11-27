@@ -8,17 +8,18 @@ class BtnGradient extends StatelessWidget{
     required this.text,
     required this.width,
     required this.border,
-    required this.proses
+    required this.onPressed
   }) : super(key: key);
 
-  final Text text;
+  final String text;
   final width;
   final border;
-  final proses;
+  final onPressed;
 
   @override
   Widget build(BuildContext context){
-    return Container(
+    return InkWell(
+      child: Container(
       width: width,
       height: 40,
       decoration: BoxDecoration(
@@ -31,10 +32,16 @@ class BtnGradient extends StatelessWidget{
           ]),
         borderRadius: border,
       ),
-      child: TextButton(
-        onPressed: proses,
-        child: text,
+      child: Center(child: 
+      Text(text,
+        style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
+                )
       ),
-    );
+    )),
+    onTap: onPressed,
+    )
+    ;
   }
 }

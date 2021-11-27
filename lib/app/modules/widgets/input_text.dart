@@ -8,6 +8,7 @@ class InputText extends StatelessWidget{
     required this.iconInput,
     required this.password,
     required this.width,
+    required this.controller
   }) : super(key: key);
 
   final label;
@@ -15,6 +16,7 @@ class InputText extends StatelessWidget{
   final iconInput;
   final password;
   final width;
+  final controller;
 
   @override
   Widget build(BuildContext context){
@@ -32,6 +34,7 @@ class InputText extends StatelessWidget{
           Container(
             width: width,
             child: TextField(
+              controller: controller,
               obscureText: password,
               decoration: InputDecoration(
                 hintText: hinttext,

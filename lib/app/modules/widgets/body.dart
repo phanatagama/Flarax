@@ -11,13 +11,14 @@ class Body extends StatelessWidget{
   @override
   Widget build(BuildContext context){
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        elevation: 0,
-      ),
+      appBar: null,
+      // AppBar(
+      //   backgroundColor: Colors.white,
+      //   elevation: 0,
+      // ),
       body: SingleChildScrollView(
         child: Container(
-          margin: EdgeInsets.only(top: 63, left: 20, right: 20),
+          margin: EdgeInsets.only(top: 64, left: 24, right: 24),
           child: child,
         ),
       ),

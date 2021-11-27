@@ -1,4 +1,6 @@
+import 'package:flarax/app/core/utils/auth_helper.dart';
 import 'package:flarax/app/core/values/colors.dart';
+import 'package:flarax/app/modules/login/controller/login_controller.dart';
 import 'package:flarax/app/modules/widgets/body.dart';
 import 'package:flarax/app/modules/widgets/btn_gradient.dart';
 import 'package:flarax/app/modules/widgets/input_text.dart';
@@ -8,7 +10,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 
-class LoginPage extends StatelessWidget{
+class LoginPage extends GetView<LoginController>{
   @override
   Widget build(BuildContext context){
     return Body(
@@ -17,9 +19,10 @@ class LoginPage extends StatelessWidget{
         children: [
           TitleAuth(title: 'Login'),
           SizedBox(
-            height: 64,
+            height: 48,
           ),
           InputText(
+            controller: controller.emailController,
             label: "E-mail adddress",
             hinttext: "e-mail",
             iconInput: Icon(Icons.email),
@@ -27,9 +30,10 @@ class LoginPage extends StatelessWidget{
             width: MediaQuery.of(context).size.width - 40,
           ),
           SizedBox(
-            height: 34,
+            height: 32,
           ),
           InputText(
+            controller: controller.passwordController,
             label: "Password",
             hinttext: "your password",
             iconInput: Icon(Icons.lock),
@@ -37,24 +41,18 @@ class LoginPage extends StatelessWidget{
             width: MediaQuery.of(context).size.width - 40,
           ),
           SizedBox(
-            height: 125,
+            height: 64,
           ),
           Center(
             child: BtnGradient(
-              text: Text(
-                "LOGIN",
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white,
-                ),
-              ),
+              text: "LOGIN",
               width: MediaQuery.of(context).size.width - 86,
               border: BorderRadius.circular(6),
-              proses: () => Get.offNamed(Routes.REGISTER),
+              onPressed: () async => authController.login(controller.emailController.text, controller.passwordController.text),
             ),
           ),
           SizedBox(
-            height: 40,
+            height: 24,
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -72,6 +70,18 @@ class LoginPage extends StatelessWidget{
               )
             ],
           ),
+          SizedBox(
+            height: 36,
+          ),
+          Center(
+            child: BtnGradient(
+              text: "Sign with Google",
+              width: MediaQuery.of(context).size.width - 86,
+              border: BorderRadius.circular(6),
+              onPressed: () async => authController.signInWithGoogle(),
+            ),
+          ),
+
         ],
       ),
     );
