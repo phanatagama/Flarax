@@ -15,3 +15,5 @@ TextStyle titleTextStyle = GoogleFonts.robotoSlab(
   fontSize: 34,
   color: titleColor,
 );
+
+const ralewayFont = "Raleway";

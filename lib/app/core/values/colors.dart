@@ -22,3 +22,10 @@ Color yellowOldColor = Color(0xff856404);
 Color defaultYellowColor = Color(0xffFFF3CD);
 Color borderYellowColor = Color(0xffFFEEBA);
 
+List<Color> kitGradients = [
+  // new Color.fromRGBO(103, 218, 255, 1.0),
+  // new Color.fromRGBO(3, 169, 244, 1.0),
+  // new Color.fromRGBO(0, 122, 193, 1.0),
+  Colors.blueGrey.shade800,
+  Colors.black87,
+];

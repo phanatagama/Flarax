@@ -1,4 +1,3 @@
-
 import 'package:flarax/app/core/values/colors.dart';
 import 'package:flutter/material.dart';
 

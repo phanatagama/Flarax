@@ -39,14 +39,8 @@ class AuthController extends GetxController {
     }
 
     if (user == null) {
-        
       // if the user is not found then the user is navigated to the Register Screen
-      // Get.offAllNamed(Routes.REGISTER);
-      // Get.snackbar(
-      //   "Error",
-      //   "email or password not correctly",
-      //   snackPosition: SnackPosition.BOTTOM,
-      // );
+      Get.offAllNamed(Routes.LOGIN);
     } else {
         
       // if the user exists and logged in the the user is navigated to the Home Screen
@@ -57,14 +51,12 @@ class AuthController extends GetxController {
 
   _setInitialScreenGoogle(GoogleSignInAccount? googleSignInAccount) {
     print(googleSignInAccount);
+    if (googleSignInAccount?.id != null) {
+      firestoreUser.bindStream(streamFirestoreUser());
+    }
     if (googleSignInAccount == null) {
       // if the user is not found then the user is navigated to the Register Screen
-      // Get.offAllNamed(Routes.REGISTER);
-      // Get.snackbar(
-      //   "Error",
-      //   "Try Again",
-      //   snackPosition: SnackPosition.BOTTOM,
-      // );
+      Get.offAllNamed(Routes.LOGIN);
     } else {
       // if the user exists and logged in the the user is navigated to the Home Screen
       Get.offAllNamed(Routes.HOME);
@@ -198,5 +190,6 @@ class AuthController extends GetxController {
   
   void signOut() async {
     await auth.signOut();
+    Get.offAllNamed(Routes.LOGIN);
   }
 }
