@@ -1,10 +1,11 @@
 import 'package:flarax/app/core/utils/auth_helper.dart';
 import 'package:flarax/app/core/values/colors.dart';
+import 'package:flarax/app/core/values/constant.dart';
 import 'package:flarax/app/modules/register/controller/register_controller.dart';
 import 'package:flarax/app/modules/widgets/body.dart';
-import 'package:flarax/app/modules/widgets/btn_gradient.dart';
-import 'package:flarax/app/modules/widgets/input_text.dart';
-import 'package:flarax/app/modules/widgets/title_auth.dart';
+import 'package:flarax/app/modules/widgets/btn_gradient_widget.dart';
+import 'package:flarax/app/modules/widgets/input_text_widget.dart';
+import 'package:flarax/app/modules/widgets/title_auth_widget.dart';
 import 'package:flarax/app/routes/app_pages.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -16,26 +17,16 @@ class RegisterPage extends GetView<RegisterController>{
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          TitleAuth(title: "Register"),
+          TitleAuth(title: Const.REGISTER),
           SizedBox(
             height: 22,
           ),
-          // InputText(
-          //     label: 'NIK',
-          //     hinttext: 'Nomor Induk Kependuduk',
-          //     iconInput: Icon(Icons.people),
-          //     password: false,
-          //     width: MediaQuery.of(context).size.width - 40,
-          // ),
-          // SizedBox(
-          //   height: 15,
-          // ),
           Row(
             children: [
               InputText(
                 controller: controller.fnameController,
-                  label: 'First Name',
-                  hinttext: 'First Name',
+                  label: Const.FIRSTNAME,
+                  hinttext: Const.FIRSTNAME,
                   iconInput: null,
                   password: false,
                   width: (MediaQuery.of(context).size.width - 64)/2,
@@ -45,8 +36,8 @@ class RegisterPage extends GetView<RegisterController>{
               ),
               InputText(
                 controller: controller.lnameController,
-                  label: 'Last Name',
-                  hinttext: 'Last Name',
+                  label: Const.LASTNAME,
+                  hinttext: Const.LASTNAME,
                   iconInput: null,
                   password: false,
                   width: (MediaQuery.of(context).size.width - 64) / 2,
@@ -58,8 +49,8 @@ class RegisterPage extends GetView<RegisterController>{
           ),
           InputText(
             controller: controller.addressController,
-            label: "Address",
-            hinttext: "Address",
+            label: Const.ADDRESS,
+            hinttext: Const.ADDRESS,
             iconInput: Icon(Icons.search),
             password: false,
             width: MediaQuery.of(context).size.width - 40,
@@ -71,8 +62,8 @@ class RegisterPage extends GetView<RegisterController>{
             children: [
               InputText(
                 controller: controller.zipcodeController,
-                label: "ZipCode",
-                hinttext: "Zip Code",
+                label: Const.ZIPCODE,
+                hinttext: Const.ZIPCODE,
                 iconInput: null,
                 password: false,
                 width: (MediaQuery.of(context).size.width - 72) / 2,
@@ -82,8 +73,8 @@ class RegisterPage extends GetView<RegisterController>{
               ),
               InputText(
                 controller: controller.cityController,
-                label: "City",
-                hinttext: "City",
+                label: Const.CITY,
+                hinttext: Const.CITY,
                 iconInput: null,
                 password: false,
                 width: (MediaQuery.of(context).size.width - 72) / 2,
@@ -97,9 +88,20 @@ class RegisterPage extends GetView<RegisterController>{
             height: 15,
           ),
           InputText(
+            controller: controller.phoneController,
+              label: Const.PHONE,
+              hinttext: Const.HINTPHONE,
+              iconInput: Icon(Icons.people),
+              password: false,
+              width: MediaQuery.of(context).size.width - 40,
+          ),
+          SizedBox(
+            height: 15,
+          ),
+          InputText(
             controller: controller.emailController,
-            label: "E-mail address",
-            hinttext: "e-mail",
+            label: Const.EMAIL,
+            hinttext: Const.HINTEMAIL,
             iconInput: Icon(Icons.email),
             password: false,
             width: MediaQuery.of(context).size.width - 40,
@@ -109,8 +111,8 @@ class RegisterPage extends GetView<RegisterController>{
           ),
           InputText(
             controller: controller.passwordController,
-            label: "Password",
-            hinttext: "Password",
+            label: Const.PASSWORD,
+            hinttext: Const.PASSWORD,
             iconInput: Icon(Icons.lock),
             password: true,
             width: MediaQuery.of(context).size.width - 40,
@@ -130,17 +132,18 @@ class RegisterPage extends GetView<RegisterController>{
           ),
           Center(
             child: BtnGradient(
-              text: "REGISTER",
+              text: Const.REGISTER.toUpperCase(),
               width: MediaQuery.of(context).size.width - 86,
               border: BorderRadius.circular(6),
               onPressed: () => authController.register(
-                email: controller.emailController.text, 
-                password: controller.passwordController.text,
-                fname: controller.fnameController.text, 
-                lname: controller.lnameController.text,
-                zipcode: controller.zipcodeController.text, 
-                city: controller.cityController.text,
-                address: controller.addressController.text)
+                email: controller.emailController.text.trim(), 
+                password: controller.passwordController.text.trim(),
+                fname: controller.fnameController.text.trim(), 
+                lname: controller.lnameController.text.trim(),
+                zipcode: controller.zipcodeController.text.trim(), 
+                city: controller.cityController.text.trim(),
+                address: controller.addressController.text.trim(),
+                phoneNumber: controller.phoneController.text.trim())
             ),
           ),
           SizedBox(
@@ -149,11 +152,11 @@ class RegisterPage extends GetView<RegisterController>{
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text("Already have an Account ? "),
+              Text(Const.HAVEACCOUNT),
               GestureDetector(
                 onTap: () => Get.offNamed(Routes.LOGIN),
                 child: Text(
-                  "Sign In",
+                  Const.SIGNIN,
                   style: TextStyle(
                     fontSize: 12,
                     color: blueColor,

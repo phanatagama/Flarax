@@ -1,4 +1,4 @@
-import 'package:flarax/app/modules/widgets/label_icon.dart';
+import 'package:flarax/app/modules/widgets/label_icon_widget.dart';
 import 'package:flutter/material.dart';
 
 class DashboardMenuRow extends StatelessWidget {

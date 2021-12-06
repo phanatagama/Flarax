@@ -1,4 +1,3 @@
-
 import 'package:flarax/app/controller/auth_controller.dart';
 import 'package:flarax/app/modules/login/controller/login_controller.dart';
 import 'package:get/get.dart';

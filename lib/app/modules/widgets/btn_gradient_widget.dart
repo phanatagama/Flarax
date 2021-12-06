@@ -33,10 +33,11 @@ class BtnGradient extends StatelessWidget{
       ),
       child: Center(child: 
       Text(text,
-        style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white,
-                )
+        style: Theme.of(context).textTheme.button?.copyWith(fontWeight: FontWeight.bold, color: Colors.white),
+        // TextStyle(
+        //           fontWeight: FontWeight.bold,
+        //           color: Colors.white,
+        //         )
       ),
     )),
     onTap: onPressed,

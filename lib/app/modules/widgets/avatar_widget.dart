@@ -1,5 +1,5 @@
 import 'package:flarax/app/data/models/user_model.dart';
-import 'package:flarax/app/modules/widgets/default_avatar.dart';
+import 'package:flarax/app/modules/widgets/default_avatar_widget.dart';
 import 'package:flutter/material.dart';
 
 class Avatar extends StatelessWidget {

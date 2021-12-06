@@ -8,5 +8,6 @@ class RegisterController extends GetxController {
   final TextEditingController zipcodeController = TextEditingController(); 
   final TextEditingController addressController = TextEditingController(); 
   final TextEditingController cityController = TextEditingController(); 
+  final TextEditingController phoneController = TextEditingController(); 
   final TextEditingController passwordController = TextEditingController();
 }

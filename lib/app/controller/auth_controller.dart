@@ -108,10 +108,11 @@ class AuthController extends GetxController {
                 email: result.user!.email!,
                 firstname: name.first,
                 lastname: name.last,
+                phoneNumber: result.user!.phoneNumber!,
                 photoUrl: result.user!.photoURL.toString());
             _createUserFirestore(_newUser, result.user!);
             })
-            .catchError((onErr) => print(onErr));
+            .catchError((onErr) { print(onErr);});
         var document = await firebaseFirestore.collection("address").doc(auth.currentUser!.uid).get();
         if (!document.exists) {
           AddressModel _newAddress = AddressModel(
@@ -133,7 +134,7 @@ class AuthController extends GetxController {
     }
   }
 
-  void register({ email, password, fname, lname, zipcode, city, address}) async {
+  void register({ email, password, fname, lname, phoneNumber, zipcode, city, address}) async {
     try {
       await auth.createUserWithEmailAndPassword(
           email: email, password: password).then((result) async {
@@ -150,6 +151,7 @@ class AuthController extends GetxController {
                 email: result.user!.email!,
                 firstname: fname,
                 lastname: lname,
+                phoneNumber: phoneNumber,
                 photoUrl: gravatarUrl);
             AddressModel _newAddress = AddressModel(
               uid: result.user!.uid,

@@ -2,15 +2,16 @@ import 'package:flarax/app/core/utils/auth_helper.dart';
 import 'package:flarax/app/core/values/constant.dart';
 import 'package:flarax/app/core/values/styles.dart';
 import 'package:flarax/app/modules/home/widgets/menu_row_widget.dart';
-import 'package:flarax/app/modules/widgets/background.dart';
-import 'package:flarax/app/modules/widgets/profile_tile.dart';
+import 'package:flarax/app/modules/widgets/background_widget.dart';
+import 'package:flarax/app/modules/home/widgets/profile_tile_widget.dart';
 import 'package:flarax/app/routes/app_pages.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 
-class HomePage extends StatelessWidget {
-  late final Size deviceSize;
+// ignore: must_be_immutable
+class HomePage extends GetView {
+  late Size deviceSize;
   Widget appBarColumn(BuildContext context) => SafeArea(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 18.0),
@@ -19,22 +20,22 @@ class HomePage extends StatelessWidget {
               new Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
-                  ClipOval(
+                  Obx(() => ClipOval(
                     child: Material(
                       color: Colors.transparent,
                       child: Ink.image(
-                        image: NetworkImage(authController.firestoreUser.value?.photoUrl ?? photoUrl),
+                        image: NetworkImage(authController.firestoreUser.value?.photoUrl ?? Const.PHOTOURL),
                         fit: BoxFit.cover,
                         width: 40,
                         height: 40,
                         child: InkWell(onTap: (){})),
                       ),
-                    ),
-                  new ProfileTile(
+                    ),),
+                  Obx(() => new ProfileTile(
                     title: "Hi, ${authController.firestoreUser.value?.firstname} ${authController.firestoreUser.value?.lastname}",
-                    subtitle: "Welcome to the Flarax App",
+                    subtitle: Const.WELCOME,
                     textColor: Colors.white,
-                  ),
+                  ),),
                   new IconButton(
                     icon: new Icon(
                       Icons.logout,
@@ -42,7 +43,7 @@ class HomePage extends StatelessWidget {
                     ),
                     onPressed: () {
                       authController.signOut();
-                    },
+                      },
                   )
                 ],
               ),
@@ -67,7 +68,7 @@ class HomePage extends StatelessWidget {
                 Expanded(
                   child: TextField(
                     decoration: InputDecoration(
-                        border: InputBorder.none, hintText: "Find our product"),
+                        border: InputBorder.none, hintText: Const.HINTSEARCHPRODUCT),
                   ),
                 ),
                 Icon(Icons.menu),
@@ -89,15 +90,17 @@ class HomePage extends StatelessWidget {
                 children: <Widget>[
                   DashboardMenuRow(
                     firstIcon: FontAwesomeIcons.solidUser,
-                    firstLabel: "Profile",
+                    firstLabel: Const.PROFILE,
                     firstIconCircleColor: Colors.blue,
                     firstOnPressed: () => Get.toNamed(Routes.PROFILE),
                     secondIcon: FontAwesomeIcons.userFriends,
-                    secondLabel: "Groups",
+                    secondLabel: Const.PRODUCTS,
+                    secondOnPressed: () => Get.toNamed(Routes.PRODUCT),
                     secondIconCircleColor: Colors.orange,
                     thirdIcon: FontAwesomeIcons.mapMarkerAlt,
-                    thirdLabel: "Nearby",
+                    thirdLabel: Const.POSTING,
                     thirdIconCircleColor: Colors.purple,
+                    thirdOnPressed: () => Get.toNamed(Routes.POSTPRODUCT),
                     fourthIcon: FontAwesomeIcons.locationArrow,
                     fourthLabel: "Moment",
                     fourthIconCircleColor: Colors.indigo,

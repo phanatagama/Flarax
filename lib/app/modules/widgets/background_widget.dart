@@ -1,8 +1,9 @@
 import 'package:flarax/app/core/utils/arc_clipper.dart';
 import 'package:flarax/app/core/values/colors.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
-class Background extends StatelessWidget {
+class Background extends GetView {
   final showIcon;
   final image;
   Background({this.showIcon = true, this.image});

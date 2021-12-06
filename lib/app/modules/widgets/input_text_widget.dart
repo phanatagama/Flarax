@@ -6,15 +6,15 @@ class InputText extends StatelessWidget{
     required this.label,
     required this.hinttext,
     required this.iconInput,
-    required this.password,
+    this.password = false,
     required this.width,
     required this.controller
   }) : super(key: key);
 
-  final label;
-  final hinttext;
+  final String label;
+  final String hinttext;
   final iconInput;
-  final password;
+  final bool password;
   final width;
   final controller;
 

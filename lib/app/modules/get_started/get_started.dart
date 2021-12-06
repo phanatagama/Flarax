@@ -1,12 +1,13 @@
+import 'package:flarax/app/core/values/constant.dart';
 import 'package:flarax/app/core/values/styles.dart';
-import 'package:flarax/app/modules/widgets/btn_gradient.dart';
+import 'package:flarax/app/modules/widgets/btn_gradient_widget.dart';
 import 'package:flarax/app/routes/app_pages.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:get/get.dart';
 
-class GetStarted extends StatelessWidget{
+class GetStarted extends GetView{
   @override
   Widget build(BuildContext context){
     double width = MediaQuery.of(context).size.width;
@@ -16,7 +17,7 @@ class GetStarted extends StatelessWidget{
         margin: EdgeInsets.only(top: 125, bottom: 19),
         child: Center(
           child: Text(
-            "FLARAX",
+            Const.FLARAX,
             style: titleTextStyle,
           ),
         ),
@@ -52,7 +53,7 @@ class GetStarted extends StatelessWidget{
       return Container(
         margin: EdgeInsets.symmetric(horizontal: 30),
         child: Text(
-          'Flarax merupakan aplikasi yang memberikan informasi mengenai barang bekas gratis yang masih layak dipakai',
+          Const.APPDESCRIPTION,
           style: greyTextStyle.copyWith(fontSize: 12),
           textAlign: TextAlign.center,
         ),
@@ -72,7 +73,7 @@ class GetStarted extends StatelessWidget{
             height: height / 10,
           ),
           BtnGradient(
-            text: "Get Started",
+            text: Const.GETSTARTED,
             width: width - 208,
             border: BorderRadius.circular(50),
             onPressed: () => Get.offNamed(Routes.LOGIN),

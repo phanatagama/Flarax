@@ -2,8 +2,8 @@ import 'package:flarax/app/core/utils/auth_helper.dart';
 import 'package:flarax/app/core/values/constant.dart';
 import 'package:flarax/app/data/models/user_model.dart';
 import 'package:flarax/app/modules/profile/widgets/appbar_widget.dart';
-import 'package:flarax/app/modules/profile/widgets/button_widget.dart';
-import 'package:flarax/app/modules/profile/widgets/profile_widget.dart';
+import 'package:flarax/app/modules/widgets/button_widget.dart';
+import 'package:flarax/app/modules/widgets/profile_widget.dart';
 import 'package:flarax/app/modules/profile/widgets/textfield_widget.dart';
 import 'package:flutter/material.dart';
 
@@ -24,19 +24,19 @@ class _EditProfilePageState extends State<EditProfilePage> {
               physics: BouncingScrollPhysics(),
               children: [
                 ProfileWidget(
-                  imagePath: user?.photoUrl ?? photoUrl,
+                  imagePath: user?.photoUrl ?? Const.PHOTOURL,
                   isEdit: true,
                   onClicked: () {},
                 ),
                 const SizedBox(height: 24),
                 TextFieldWidget(
-                  label: 'Full Name',
+                  label: Const.FULLNAME,
                   text: "${user?.firstname} ${user?.lastname}",
                   onChanged: (name) {},
                 ),
                 const SizedBox(height: 24),
                 TextFieldWidget(
-                  label: 'Email',
+                  label: Const.EMAIL,
                   text: "${user?.email}",
                   onChanged: (email) {},
                 ),
@@ -47,7 +47,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                 //   maxLines: 5,
                 //   onChanged: (about) {},
                 // ),
-                ButtonWidget(text: "Save", onClicked: (){})
+                ButtonWidget(text: Const.SAVE, onClicked: (){})
               ],
             ),
           );
