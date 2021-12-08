@@ -20,6 +20,7 @@ class ProductPage extends GetView<ProductController>{
               color: Colors.white, borderRadius: BorderRadius.circular(5)),
           child: Center(
             child: TextField(
+              focusNode: ProductController.focusNode,
               decoration: const InputDecoration(
                 prefixIcon: Icon(Icons.search),
                 hintText: Const.HINTSEARCHPRODUCT,
@@ -94,7 +95,7 @@ class ProductPage extends GetView<ProductController>{
                     return Center(child: Text(Const.EMPTY),);
                   }
                     return controller.layoutGrid.value
-                      ? productGridCard(data) : productListCard(data);
+                      ? productGridCard( data) : productListCard( data);
                 }
                   );
                 }

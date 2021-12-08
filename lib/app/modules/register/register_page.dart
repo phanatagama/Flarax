@@ -21,28 +21,13 @@ class RegisterPage extends GetView<RegisterController>{
           SizedBox(
             height: 22,
           ),
-          Row(
-            children: [
-              InputText(
-                controller: controller.fnameController,
-                  label: Const.FIRSTNAME,
-                  hinttext: Const.FIRSTNAME,
-                  iconInput: null,
-                  password: false,
-                  width: (MediaQuery.of(context).size.width - 64)/2,
-              ),
-              SizedBox(
-                width: 8,
-              ),
-              InputText(
-                controller: controller.lnameController,
-                  label: Const.LASTNAME,
-                  hinttext: Const.LASTNAME,
-                  iconInput: null,
-                  password: false,
-                  width: (MediaQuery.of(context).size.width - 64) / 2,
-              ),
-            ],
+          InputText(
+            controller: controller.fullnameController,
+              label: Const.FULLNAME,
+              hinttext: Const.FULLNAME,
+              iconInput: null,
+              password: false,
+              width: (MediaQuery.of(context).size.width - 40),
           ),
           SizedBox(
             height: 15,
@@ -89,11 +74,11 @@ class RegisterPage extends GetView<RegisterController>{
           ),
           InputText(
             controller: controller.phoneController,
-              label: Const.PHONE,
-              hinttext: Const.HINTPHONE,
-              iconInput: Icon(Icons.people),
-              password: false,
-              width: MediaQuery.of(context).size.width - 40,
+            label: Const.PHONE,
+            hinttext: Const.HINTPHONE,
+            iconInput: Icon(Icons.people),
+            password: false,
+            width: MediaQuery.of(context).size.width - 40,
           ),
           SizedBox(
             height: 15,
@@ -117,16 +102,6 @@ class RegisterPage extends GetView<RegisterController>{
             password: true,
             width: MediaQuery.of(context).size.width - 40,
           ),
-          // SizedBox(
-          //   height: 15,
-          // ),
-          // InputText(
-          //   label: "Confirm Password",
-          //   hinttext: "Confirm Password",
-          //   iconInput: Icon(Icons.lock),
-          //   password: true,
-          //   width: MediaQuery.of(context).size.width - 40,
-          // ),
           SizedBox(
             height: 48,
           ),
@@ -138,8 +113,7 @@ class RegisterPage extends GetView<RegisterController>{
               onPressed: () => authController.register(
                 email: controller.emailController.text.trim(), 
                 password: controller.passwordController.text.trim(),
-                fname: controller.fnameController.text.trim(), 
-                lname: controller.lnameController.text.trim(),
+                fullname: controller.fullnameController.text.trim(), 
                 zipcode: controller.zipcodeController.text.trim(), 
                 city: controller.cityController.text.trim(),
                 address: controller.addressController.text.trim(),

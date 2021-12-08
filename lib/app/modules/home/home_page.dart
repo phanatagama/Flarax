@@ -32,7 +32,7 @@ class HomePage extends GetView {
                       ),
                     ),),
                   Obx(() => new ProfileTile(
-                    title: "Hi, ${authController.firestoreUser.value?.firstname} ${authController.firestoreUser.value?.lastname}",
+                    title: "Hi, ${authController.firestoreUser.value?.fullname}",
                     subtitle: Const.WELCOME,
                     textColor: Colors.white,
                   ),),

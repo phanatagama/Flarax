@@ -28,5 +28,5 @@ Widget contactOwner(context) => ElevatedButton(
               },
             );
           },
-          child: const Text('Contact Seller'),
+          child: const Text('Contact Owner'),
         );

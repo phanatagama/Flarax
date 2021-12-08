@@ -10,9 +10,9 @@ import 'package:google_sign_in/google_sign_in.dart';
 
 class AuthController extends GetxController {
   static AuthController instance = Get.find();
-  late Rx<User?> firebaseUser;
+  late Rxn<User?> firebaseUser;
   Rxn<UserModel> firestoreUser = Rxn<UserModel>();
-  late Rx<GoogleSignInAccount?> googleSignInAccount;
+  late Rxn<GoogleSignInAccount?> googleSignInAccount;
 
   @override
   void onReady() {
@@ -20,8 +20,8 @@ class AuthController extends GetxController {
     // auth is comning from the constants.dart file but it is basically FirebaseAuth.instance. 
     // Since we have to use that many times I just made a constant file and declared there
     
-    firebaseUser = Rx<User?>(auth.currentUser);
-    googleSignInAccount = Rx<GoogleSignInAccount?>(googleSign.currentUser);
+    firebaseUser = Rxn<User?>(auth.currentUser);
+    googleSignInAccount = Rxn<GoogleSignInAccount?>(googleSign.currentUser);
       
       
     firebaseUser.bindStream(auth.userChanges());
@@ -102,12 +102,10 @@ class AuthController extends GetxController {
             .signInWithCredential(credential)
             .then((result) {
             //create the new user object
-            final List name = result.user!.displayName.toString().split(" ");
             UserModel _newUser = UserModel(
                 uid: result.user!.uid,
                 email: result.user!.email!,
-                firstname: name.first,
-                lastname: name.last,
+                fullname: result.user!.displayName!,
                 phoneNumber: result.user!.phoneNumber!,
                 photoUrl: result.user!.photoURL.toString());
             _createUserFirestore(_newUser, result.user!);
@@ -134,7 +132,7 @@ class AuthController extends GetxController {
     }
   }
 
-  void register({ email, password, fname, lname, phoneNumber, zipcode, city, address}) async {
+  void register({ email, password, fullname, phoneNumber, zipcode, city, address}) async {
     try {
       await auth.createUserWithEmailAndPassword(
           email: email, password: password).then((result) async {
@@ -149,8 +147,7 @@ class AuthController extends GetxController {
             UserModel _newUser = UserModel(
                 uid: result.user!.uid,
                 email: result.user!.email!,
-                firstname: fname,
-                lastname: lname,
+                fullname: fullname,
                 phoneNumber: phoneNumber,
                 photoUrl: gravatarUrl);
             AddressModel _newAddress = AddressModel(

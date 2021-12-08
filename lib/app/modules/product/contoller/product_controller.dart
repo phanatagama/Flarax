@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flarax/app/core/utils/auth_helper.dart';
 import 'package:flarax/app/data/models/product_model.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
 class ProductController extends GetxController {
@@ -9,6 +10,7 @@ class ProductController extends GetxController {
   final items = [].obs;
   final itemsAfterFilter = [].obs;
   final filterOptions = [].obs;
+  static FocusNode focusNode = FocusNode();
 
   selectFilter(bool isSelected, String category) {
     isSelected ? filterOptions.add(category) : filterOptions.remove(category);

@@ -16,6 +16,10 @@ class DetailPage extends GetView<DetailController> {
     controller.checkIsMyProduct(Get.arguments);
     return Scaffold(
       appBar: AppBar(
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back, color: Colors.black),
+          onPressed: (){ Get.back(result: false);},
+        ),
         title: Container(
           width: double.infinity,
           height: 40,
@@ -29,7 +33,7 @@ class DetailPage extends GetView<DetailController> {
                 border: InputBorder.none,
               ),
               onTap: () {
-                //TODO: PINDAH KE SEARCH PAGE
+                Get.back(result: true);
               },
             ),
           ),
@@ -42,8 +46,12 @@ class DetailPage extends GetView<DetailController> {
               (BuildContext context, AsyncSnapshot<DocumentSnapshot> snapshot) {
             if (!snapshot.hasData) {
               return Center(child: CircularProgressIndicator());
+            } else {
+              if (snapshot.data!.exists) {
+                return productDetail(context, snapshot.data);
+              }
+              return Center(child: CircularProgressIndicator());
             }
-            return productDetail(context, snapshot.data);
           },
         ),
       ),

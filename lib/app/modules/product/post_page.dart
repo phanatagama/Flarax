@@ -13,6 +13,7 @@ import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 
 class PostPage extends GetView<PostController>{
+  
   @override
   Widget build(BuildContext context){
     return Body(
@@ -31,31 +32,69 @@ class PostPage extends GetView<PostController>{
                   },
                 ),),
           SizedBox(
-            height: 22,
+            height: 8,
           ),
           Row(
             children: [
-              InputText(
+              Expanded(child: InputText(
                 controller: controller.productNameController,
                   label: Const.NAME,
                   hinttext: Const.NAME,
                   iconInput: null,
                   password: false,
-                  width: (MediaQuery.of(context).size.width - 64)/2,
-              ),
+                  width: (MediaQuery.of(context).size.width - 72)/2,
+              ),),
               SizedBox(
                 width: 8,
               ),
-              InputText(
-                controller: controller.productCategoryController,
-                  label: Const.CATEGORY,
-                  hinttext: Const.CATEGORY,
-                  iconInput: null,
-                  password: false,
-                  width: (MediaQuery.of(context).size.width - 64) / 2,
+              Expanded(child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                Const.CATEGORY,
+                style: TextStyle(
+                  color: Colors.black.withOpacity(0.87),
+                  fontSize: 14,
+                ),
               ),
+              Obx(() =>DropdownButton<String>(
+                value: controller.chosenValue.value,
+                elevation: 5,
+                style: TextStyle(color: Colors.black),
+
+                items: <String>[
+                  ...Const.CATEGORYPRODUCT
+                ].map<DropdownMenuItem<String>>((String value) {
+                  return DropdownMenuItem<String>(
+                    value: value,
+                    child: Text(value),
+                  );
+                }).toList(),
+                hint: controller.chosenValue.value.isEmpty ? Text(
+                  "Please choose a category",
+                  style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 16,
+                      fontWeight: FontWeight.w600),
+                ) : Text("${controller.chosenValue.value}"),
+                onChanged: (choose) {
+                  controller.chosenValue.value = choose!;
+                },
+              ))
+            ],
+          ),),
+              
+              // InputText(
+              //   controller: controller.productCategoryController,
+              //     label: Const.CATEGORY,
+              //     hinttext: Const.CATEGORY,
+              //     iconInput: null,
+              //     password: false,
+              //     width: (MediaQuery.of(context).size.width - 64) / 2,
+              // ),
             ],
           ),
+          
           SizedBox(
             height: 15,
           ),
@@ -113,19 +152,20 @@ class PostPage extends GetView<PostController>{
           SizedBox(
             height: 48,
           ),
-          Center(
-            child: ButtonWidget(text: Const.POSTING, onClicked: () {
+          Row(children: [
+          Expanded(child: ButtonWidget(text: Const.CANCEL, onClicked: () => Get.back() )),
+          SizedBox(width: 8,),
+          Expanded(child: ButtonWidget(text: Const.POSTING, onClicked: () {
               ProductController.addProduct(
                 productName: controller.productNameController.text.trim(), 
                 productDescription: controller.productDescriptionController.text.trim(), 
-                productCategory: controller.productCategoryController.text.trim(), 
+                productCategory: controller.chosenValue.value, 
                 productPictureUrl: controller.photoUrl.value, 
                 productProvince: controller.productProvinceController.text.trim(), 
                 productCity: controller.productCityController.text.trim(), 
                 productAddress: controller.productAddressController.text.trim());
                 Get.offNamed(Routes.PRODUCT);
-            })
-          ),
+            }))],)
         ],
       ),
     );

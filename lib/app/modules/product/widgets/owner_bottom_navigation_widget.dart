@@ -6,12 +6,14 @@ import 'package:get/get.dart';
 
 Widget ownerBottomNavigation(String productId){
   return Row(children: [
-    ElevatedButton(onPressed: () { 
-      Get.back();
+    Expanded(child: ElevatedButton(onPressed: () { 
       ProductController.deleteProduct(productId: productId);
+      Get.back(result: false);
       }, 
-    child: Text(Const.DELETE)),
-    ElevatedButton(onPressed: () => Get.toNamed(Routes.EDITPRODUCT, arguments: productId), 
-    child: Text(Const.EDIT))
+    child: Text(Const.DELETE))),
+    SizedBox(width: 8,),
+    Expanded(child: ElevatedButton(onPressed: () => Get.toNamed(Routes.EDITPRODUCT, arguments: productId), 
+    child: Text(Const.EDIT)))
+    
   ],);
 }

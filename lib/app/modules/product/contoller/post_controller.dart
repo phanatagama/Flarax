@@ -9,6 +9,6 @@ class PostController extends ProductController {
   final TextEditingController productAddressController = TextEditingController();
   final TextEditingController productCityController = TextEditingController();
   final TextEditingController productProvinceController = TextEditingController();
-  final TextEditingController productCategoryController = TextEditingController();
+  RxString chosenValue = 'Fashion'.obs;
   RxString photoUrl = Const.PHOTOURL.obs;
 }

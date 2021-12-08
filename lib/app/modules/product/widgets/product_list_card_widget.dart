@@ -1,13 +1,21 @@
+import 'package:flarax/app/modules/product/contoller/product_controller.dart';
 import 'package:flarax/app/routes/app_pages.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-ListView productListCard(List snapshot) {
+ListView productListCard( List snapshot) {
   return ListView(
     padding: EdgeInsets.zero,
     children: snapshot
       .map((doc) => InkWell(
-            onTap: () => Get.toNamed(Routes.DETAILPRODUCT, arguments: doc.id),
+            onTap: () async { 
+              var result = await Get.toNamed(Routes.DETAILPRODUCT, arguments: doc.id);
+              if (result == true){
+                FocusScope.of(Get.context!).requestFocus(ProductController.focusNode);
+              }else {
+                FocusManager.instance.primaryFocus?.unfocus();
+              }
+              },
             child: Card(
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10)),

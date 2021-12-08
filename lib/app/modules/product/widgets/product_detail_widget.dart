@@ -26,7 +26,7 @@ Widget productDetail(BuildContext context, DocumentSnapshot? data) {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  data?["productStatus"],
+                  "${data?["productStatus"]}",
                   // style: titleText20,
                 ),
                 const Icon(Icons.favorite_border),
@@ -36,7 +36,7 @@ Widget productDetail(BuildContext context, DocumentSnapshot? data) {
               height: 10,
             ),
             Text(
-              data?["productName"],
+              "${data?["productName"]}",
               // style: contentText18,
             ),
           ],
@@ -103,7 +103,7 @@ Widget productDetail(BuildContext context, DocumentSnapshot? data) {
               height: 10,
             ),
             Text(
-              data?["productDescription"],
+              "${data?["productDescription"]}",
               // style: contentText18,
             ),
           ],

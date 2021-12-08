@@ -1,4 +1,3 @@
-
 import 'package:flarax/app/modules/product/contoller/post_controller.dart';
 import 'package:get/get.dart';
 

@@ -1,9 +1,11 @@
 
 class Const{
-  static const PHOTOURL = "https://www.gravatar.com/avatar/2fc2880ff4c97d37fa58608a16a4cd72.png?s=200&d=retro&r=pg";
+  static const PHOTOURL = "https://getstamped.co.uk/wp-content/uploads/WebsiteAssets/Placeholder.jpg";
   static const DELETE = "DELETE";
+  static const UPDATE = "UPDATE";
   static const EDIT = "EDIT";
   static const SAVE = "SAVE";
+  static const CANCEL = "CANCEL";
   static const FLARAX = "FLARAX";
   static const GETSTARTED = "Get Started";
   static const PROFILE = "Profile";
