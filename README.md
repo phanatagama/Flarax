@@ -2,6 +2,8 @@
 
 Flarax adalah aplikasi yang memberikan informasi barang bekas gratis yang masih layak untuk dipakai
 
+![Flarax](https://socialify.git.ci/MochArisandiJayanto/Flarax/image?description=1&descriptionEditable=%F0%9F%92%A0Made%20using%20Dart%2C%20Flutter%2C%20Firebase%20and%20GetX%F0%9F%92%A0&font=Source%20Code%20Pro&forks=1&issues=1&language=1&pattern=Brick%20Wall&pulls=1&stargazers=1&theme=Dark)
+
 ### Getting Started
 
 This project is a starting point for a Flutter application.
@@ -52,6 +54,8 @@ Pengguna lain yang berminat dengan barang bekas tersebut bisa menghubungi penggu
 
 ## 👁️ Preview/Screenshots
 
+- More Application Design in [Figma](https://www.figma.com/file/eISf5jqPckik2Js0NIm7TX/Flarax-App-Prototype?node-id=0%3A1)
+
 | ![landing-page](https://user-images.githubusercontent.com/48324618/145372808-ae5dc7a8-f310-4643-84ed-b678a8aeeff1.jpg) **Landing Page** | ![login-page](https://user-images.githubusercontent.com/48324618/145372649-d459f07a-ba18-4cd0-aee1-fe91524abce5.jpg) **Login Page** | ![register-pagge](https://user-images.githubusercontent.com/48324618/145372937-6fddfba7-4abd-40fa-aa01-c01d349ad1d8.jpg) **Register Page** | ![usr-profile](https://user-images.githubusercontent.com/48324618/145373431-ebd4e049-9558-4fd7-8e0d-80f0b83b02e3.jpg) **User Profile** |
 | :--: | :--: | :--: | :--: | 
 | ![home-page](https://user-images.githubusercontent.com/48324618/145373302-0a966fd3-e787-41c7-8c18-fc1e9ed79588.jpg) **Home Page** | ![detail-product](https://user-images.githubusercontent.com/48324618/145373659-0c01acd8-f2b8-4f9f-a2b3-320117b61593.jpg) **Detail Product** | ![product-page](https://user-images.githubusercontent.com/48324618/145373555-45e28331-c41d-47f1-96a5-74cd2d6d3728.jpg) **Product Page** | ![edit-product](https://user-images.githubusercontent.com/48324618/145373915-5c340a34-9e18-44a8-b81a-cc63882a313a.jpg) **Add/Edit Product** |
@@ -77,3 +81,4 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <!-- prettier-ignore-end -->
 
 <!-- ALL-CONTRIBUTORS-LIST:END -->
+![forthebadge](https://forthebadge.com/images/badges/built-with-love.svg)
