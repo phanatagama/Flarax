@@ -1,6 +1,9 @@
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flarax/app/core/utils/auth_helper.dart';
+import 'package:flarax/app/core/values/colors.dart';
 import 'package:flarax/app/core/values/constant.dart';
-import 'package:flarax/app/core/values/styles.dart';
+import 'package:flarax/app/modules/home/controller/home_controller.dart';
+import 'package:flarax/app/modules/home/widgets/list_banner_widget.dart';
 import 'package:flarax/app/modules/home/widgets/menu_row_widget.dart';
 import 'package:flarax/app/modules/widgets/background_widget.dart';
 import 'package:flarax/app/modules/home/widgets/profile_tile_widget.dart';
@@ -10,7 +13,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 
 // ignore: must_be_immutable
-class HomePage extends GetView {
+class HomePage extends GetView<HomeController> {
   late Size deviceSize;
   Widget appBarColumn(BuildContext context) => SafeArea(
         child: Padding(
@@ -67,6 +70,7 @@ class HomePage extends GetView {
                 ),
                 Expanded(
                   child: TextField(
+                    onTap: () => Get.toNamed(Routes.PRODUCT),
                     decoration: InputDecoration(
                         border: InputBorder.none, hintText: Const.HINTSEARCHPRODUCT),
                   ),
@@ -91,48 +95,48 @@ class HomePage extends GetView {
                   DashboardMenuRow(
                     firstIcon: FontAwesomeIcons.solidUser,
                     firstLabel: Const.PROFILE,
-                    firstIconCircleColor: Colors.blue,
+                    firstIconCircleColor: blueColor,
                     firstOnPressed: () => Get.toNamed(Routes.PROFILE),
-                    secondIcon: FontAwesomeIcons.userFriends,
+                    secondIcon: FontAwesomeIcons.box,
                     secondLabel: Const.PRODUCTS,
                     secondOnPressed: () => Get.toNamed(Routes.PRODUCT),
-                    secondIconCircleColor: Colors.orange,
-                    thirdIcon: FontAwesomeIcons.mapMarkerAlt,
+                    secondIconCircleColor: greenColor,
+                    thirdIcon: FontAwesomeIcons.plus,
                     thirdLabel: Const.POSTING,
-                    thirdIconCircleColor: Colors.purple,
+                    thirdIconCircleColor: greyColor,
                     thirdOnPressed: () => Get.toNamed(Routes.POSTPRODUCT),
                     fourthIcon: FontAwesomeIcons.locationArrow,
-                    fourthLabel: "Moment",
+                    fourthLabel: "My Product",
                     fourthIconCircleColor: Colors.indigo,
                   ),
-                  DashboardMenuRow(
-                    firstIcon: FontAwesomeIcons.images,
-                    firstLabel: "Albums",
-                    firstIconCircleColor: Colors.red,
-                    secondIcon: FontAwesomeIcons.solidHeart,
-                    secondLabel: "Likes",
-                    secondIconCircleColor: Colors.teal,
-                    thirdIcon: FontAwesomeIcons.solidNewspaper,
-                    thirdLabel: "Articles",
-                    thirdIconCircleColor: Colors.lime,
-                    fourthIcon: FontAwesomeIcons.solidCommentDots,
-                    fourthLabel: "Reviews",
-                    fourthIconCircleColor: Colors.amber,
-                  ),
-                  DashboardMenuRow(
-                    firstIcon: FontAwesomeIcons.footballBall,
-                    firstLabel: "Sports",
-                    firstIconCircleColor: Colors.cyan,
-                    secondIcon: FontAwesomeIcons.solidStar,
-                    secondLabel: "Fav",
-                    secondIconCircleColor: Colors.redAccent,
-                    thirdIcon: FontAwesomeIcons.blogger,
-                    thirdLabel: "Blogs",
-                    thirdIconCircleColor: Colors.pink,
-                    fourthIcon: FontAwesomeIcons.wallet,
-                    fourthLabel: "Wallet",
-                    fourthIconCircleColor: Colors.brown,
-                  ),
+                  // DashboardMenuRow(
+                  //   firstIcon: FontAwesomeIcons.images,
+                  //   firstLabel: "Albums",
+                  //   firstIconCircleColor: Colors.red,
+                  //   secondIcon: FontAwesomeIcons.solidHeart,
+                  //   secondLabel: "Likes",
+                  //   secondIconCircleColor: Colors.teal,
+                  //   thirdIcon: FontAwesomeIcons.solidNewspaper,
+                  //   thirdLabel: "Articles",
+                  //   thirdIconCircleColor: Colors.lime,
+                  //   fourthIcon: FontAwesomeIcons.solidCommentDots,
+                  //   fourthLabel: "Reviews",
+                  //   fourthIconCircleColor: Colors.amber,
+                  // ),
+                  // DashboardMenuRow(
+                  //   firstIcon: FontAwesomeIcons.footballBall,
+                  //   firstLabel: "Sports",
+                  //   firstIconCircleColor: Colors.cyan,
+                  //   secondIcon: FontAwesomeIcons.solidStar,
+                  //   secondLabel: "Fav",
+                  //   secondIconCircleColor: Colors.redAccent,
+                  //   thirdIcon: FontAwesomeIcons.blogger,
+                  //   thirdLabel: "Blogs",
+                  //   thirdIconCircleColor: Colors.pink,
+                  //   fourthIcon: FontAwesomeIcons.wallet,
+                  //   fourthLabel: "Wallet",
+                  //   fourthIconCircleColor: Colors.brown,
+                  // ),
                 ],
               ),
             ),
@@ -140,45 +144,77 @@ class HomePage extends GetView {
         ),
       );
 
-  Widget balanceCard() => Padding(
+  Widget bannerImage() => Column(
+    children: [
+      CarouselSlider(
+        options: CarouselOptions(
+          autoPlay: true,
+          autoPlayInterval: Duration(seconds: 6),
+          autoPlayAnimationDuration: Duration(milliseconds: 1500),
+          pauseAutoPlayOnTouch: true,
+          aspectRatio: 2.0,
+          onPageChanged: (index, reason) {
+            controller.current.value = index;
+          }
+        ),
+        items: child,
+        carouselController: controller.buttonCarouselController,
+        
+      ),
+      Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: Const.BANNERLIST.asMap().map(
+          (index, url) {
+            return MapEntry(index,Obx(() => Container(
+              width: 8.0,
+              height: 8.0,
+              margin: EdgeInsets.symmetric(vertical: 4.0, horizontal: 2.0),
+              decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: controller.current == index
+                      ? Color.fromRGBO(0, 0, 0, 0.9)
+                      : Color.fromRGBO(0, 0, 0, 0.4)),
+            )));
+          },).values.toList(),
+      ),
+    ]);
+
+  Widget bannerCard() => Padding(
         padding: const EdgeInsets.all(8.0),
         child: Card(
           elevation: 2.0,
-          child: Padding(
-            padding: const EdgeInsets.all(20.0),
-            child: Column(
+          child: Container(
+            padding: const EdgeInsets.all(16.0),
+            color: blueColor,
+            child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
-                Row(
+                Column(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     Text(
-                      "Balance",
-                      style: TextStyle(fontFamily: ralewayFont),
+                      Const.CARDTITLE,
+                      style: Theme.of(Get.context!).textTheme.caption!.copyWith(color: Colors.white, fontWeight: FontWeight.w900),
                     ),
-                    Material(
-                      color: Colors.black,
+                    SizedBox(height: 8,),
+                   Text(
+                  Const.CARDBODY,
+                  style: Theme.of(Get.context!).textTheme.overline!.copyWith(color: Colors.white),
+                )
+                  ],
+                ),
+                Material(
+                      color: Colors.white,
                       shape: StadiumBorder(),
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Text(
-                          "500 Points",
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontFamily: ralewayFont),
-                        ),
+                          Const.CONTINUE,
+                          style: Theme.of(Get.context!).textTheme.button!.copyWith(color: blueColor),
                       ),
-                    )
-                  ],
-                ),
-                Text(
-                  "₹ 1000",
-                  style: TextStyle(
-                      fontFamily: ralewayFont,
-                      fontWeight: FontWeight.w700,
-                      color: Colors.green,
-                      fontSize: 25.0),
-                ),
+                    ),)
               ],
             ),
           ),
@@ -200,7 +236,11 @@ class HomePage extends GetView {
             SizedBox(
               height: deviceSize.height * 0.01,
             ),
-            // balanceCard(),
+            bannerCard(),
+            SizedBox(
+              height: deviceSize.height * 0.01,
+            ),
+            bannerImage(),
           ],
         ),
       );

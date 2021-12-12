@@ -3,6 +3,9 @@ class Const{
   static const PHOTOURL = "https://getstamped.co.uk/wp-content/uploads/WebsiteAssets/Placeholder.jpg";
   static const DELETE = "DELETE";
   static const UPDATE = "UPDATE";
+  static const CARDTITLE = "DAPATKAN PRODUK BAGUS";
+  static const CARDBODY = "Cari produk sesuai kebutuhan";
+  static const CONTINUE = "CONTINUE";
   static const EDIT = "EDIT";
   static const SAVE = "SAVE";
   static const CANCEL = "CANCEL";
@@ -38,6 +41,11 @@ class Const{
   static const CREATEONE = "Create one";
   static const HAVEACCOUNT = "Already have an Account ? ";
   static const DONTHAVEACCOUNT = "Don’t have an Account ? ";
+  static const BANNERLIST = [
+    "assets/images/banner1.jpg",
+    "assets/images/banner2.jpg",
+    "assets/images/banner3.jpg",
+    ];
   static const CATEGORYPRODUCT = [
     "Fashion",
     "Electronic",
