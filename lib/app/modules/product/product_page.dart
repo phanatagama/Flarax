@@ -7,6 +7,7 @@ import 'package:flarax/app/modules/product/widgets/product_list_card_widget.dart
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:lottie/lottie.dart';
 
 class ProductPage extends GetView<ProductController>{
   @override
@@ -56,13 +57,17 @@ class ProductPage extends GetView<ProductController>{
                 return Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 4.0),
                   child: Obx(() => FilterChip(
-                                  selectedColor: Colors.white,
+                                  selectedColor: blueColor,
                                   selected: controller.isSelectFilter(item),
                                   onSelected: (isSelected) {
                                     controller.selectFilter(isSelected, item);
                                     controller.filterProduct();
                                   },
-                                  label: Text(item),
+                                  shadowColor: greyBlueColor,
+                                  shape: StadiumBorder(side: BorderSide(color: blueColor)),
+                                  pressElevation: 5,
+                                  checkmarkColor: Colors.white,
+                                  label: Text(item, style: Theme.of(Get.context!).textTheme.button!.copyWith(fontWeight: FontWeight.bold, color: Colors.white),),
                                 ),),
                 );
               },
@@ -86,13 +91,13 @@ class ProductPage extends GetView<ProductController>{
               builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshots) {
                 if (snapshots.hasData) {
                   if(snapshots.data!.docs.isEmpty){
-                    return Text(Const.EMPTY);
+                    return Center(child: Lottie.asset(Const.NOTINTERNETANIMATE),);
                   }
                   controller.items.value = snapshots.data!.docs;
                   return Obx(() {
                   List data = (controller.itemsAfterFilter.isNotEmpty) ? controller.itemsAfterFilter : controller.items;
                   if (controller.keyword.value.isNotEmpty && controller.itemsAfterFilter.isEmpty){
-                    return Center(child: Text(Const.EMPTY),);
+                    return Center(child: Lottie.asset(Const.NOTFOUNDANIMATE),);
                   }
                     return controller.layoutGrid.value
                       ? productGridCard( data) : productListCard( data);

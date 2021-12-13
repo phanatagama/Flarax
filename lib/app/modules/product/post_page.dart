@@ -71,11 +71,8 @@ class PostPage extends GetView<PostController>{
                   );
                 }).toList(),
                 hint: controller.chosenValue.value.isEmpty ? Text(
-                  "Please choose a category",
-                  style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 16,
-                      fontWeight: FontWeight.w600),
+                  Const.CHOOSECATEGORY,
+                  style: Theme.of(context).textTheme.bodyText2,
                 ) : Text("${controller.chosenValue.value}"),
                 onChanged: (choose) {
                   controller.chosenValue.value = choose!;
@@ -155,7 +152,7 @@ class PostPage extends GetView<PostController>{
           Row(children: [
           Expanded(child: ButtonWidget(text: Const.CANCEL, onClicked: () => Get.back() )),
           SizedBox(width: 8,),
-          Expanded(child: ButtonWidget(text: Const.POSTING, onClicked: () {
+          Expanded(child: ButtonWidget(text: Const.POSTING.toUpperCase(), onClicked: () {
               ProductController.addProduct(
                 productName: controller.productNameController.text.trim(), 
                 productDescription: controller.productDescriptionController.text.trim(), 

@@ -17,7 +17,7 @@ class ButtonWidget extends StatelessWidget {
           onPrimary: Colors.white,
           padding: EdgeInsets.symmetric(horizontal: 32, vertical: 12),
         ),
-        child: Text(text),
+        child: Text(text, style: Theme.of(context).textTheme.button!.copyWith(fontWeight: FontWeight.bold, color: Colors.white),),
         onPressed: onClicked,
       );
 }

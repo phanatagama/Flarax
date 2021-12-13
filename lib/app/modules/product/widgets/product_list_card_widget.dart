@@ -1,3 +1,5 @@
+
+import 'package:flarax/app/core/values/colors.dart';
 import 'package:flarax/app/modules/product/contoller/product_controller.dart';
 import 'package:flarax/app/routes/app_pages.dart';
 import 'package:flutter/material.dart';
@@ -41,28 +43,36 @@ ListView productListCard( List snapshot) {
                             doc['productName'],
                             overflow: TextOverflow.ellipsis,
                             maxLines: 2,
-                            // style: contentText16,
+                            style: Theme.of(Get.context!).textTheme.headline6!.copyWith(fontWeight: FontWeight.w800),
                           ),
                           const SizedBox(
-                            height: 5,
+                            height: 2,
                           ),
-                          Text(
-                            doc['productStatus'],
-                            maxLines: 1,
-                            overflow: TextOverflow.ellipsis,
-                            // style: contentText16,
+                          Container(decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            color: bluelightColor.withOpacity(0.5),
                           ),
+                          padding: EdgeInsets.all(8),
+                          child: Text(
+                          doc['productStatus'],
+                          style: Theme.of(Get.context!).textTheme.caption!.copyWith(fontWeight: FontWeight.bold, color: blueColor),
+                          overflow: TextOverflow.ellipsis,
+                          maxLines: 1,
+                        ),)
+                        ,
                           const SizedBox(
-                            height: 5,
+                            height: 2,
                           ),
                           Row(
                             children: [
                               const Icon(
                                 Icons.location_on_sharp,
                                 size: 16,
+                                color: Color(0xff0F9DED)
                               ),
                               Text(
                                 '${doc['productProvince']}, ${doc['productCity']}',
+                                style: Theme.of(Get.context!).textTheme.subtitle2!.copyWith(fontWeight: FontWeight.bold, color: blueColor),
                                 maxLines: 1,
                                 overflow: TextOverflow.ellipsis,
                               ),

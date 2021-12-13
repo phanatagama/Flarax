@@ -10,10 +10,10 @@ Widget ownerBottomNavigation(String productId){
       ProductController.deleteProduct(productId: productId);
       Get.back(result: false);
       }, 
-    child: Text(Const.DELETE))),
+    child: Text(Const.DELETE, style: Theme.of(Get.context!).textTheme.button!.copyWith(fontWeight: FontWeight.bold, color: Colors.white),))),
     SizedBox(width: 8,),
     Expanded(child: ElevatedButton(onPressed: () => Get.toNamed(Routes.EDITPRODUCT, arguments: productId), 
-    child: Text(Const.EDIT)))
+    child: Text(Const.EDIT, style: Theme.of(Get.context!).textTheme.button!.copyWith(fontWeight: FontWeight.bold, color: Colors.white),)))
     
   ],);
 }

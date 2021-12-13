@@ -172,8 +172,8 @@ class HomePage extends GetView<HomeController> {
               decoration: BoxDecoration(
                   shape: BoxShape.circle,
                   color: controller.current == index
-                      ? Color.fromRGBO(0, 0, 0, 0.9)
-                      : Color.fromRGBO(0, 0, 0, 0.4)),
+                      ? blueColor
+                      : bluelightColor),
             )));
           },).values.toList(),
       ),
