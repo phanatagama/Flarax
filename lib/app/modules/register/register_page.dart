@@ -8,6 +8,7 @@ import 'package:flarax/app/modules/widgets/input_text_widget.dart';
 import 'package:flarax/app/modules/widgets/title_auth_widget.dart';
 import 'package:flarax/app/routes/app_pages.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
 class RegisterPage extends GetView<RegisterController>{
@@ -45,13 +46,19 @@ class RegisterPage extends GetView<RegisterController>{
           ),
           Row(
             children: [
-              InputText(
-                controller: controller.zipcodeController,
-                label: Const.ZIPCODE,
-                hinttext: Const.ZIPCODE,
-                iconInput: null,
-                password: false,
+              Container(
                 width: (MediaQuery.of(context).size.width - 72) / 2,
+                child: TextField(
+                  controller: controller.zipcodeController,
+                  decoration: InputDecoration(
+                    labelText: Const.ZIPCODE,
+                    hintText: Const.ZIPCODE,
+                  ),
+                  keyboardType: TextInputType.number,
+                  inputFormatters: <TextInputFormatter>[
+                    WhitelistingTextInputFormatter.digitsOnly
+                  ], // Only numbers can be entered
+                ),
               ),
               SizedBox(
                 width: 8,

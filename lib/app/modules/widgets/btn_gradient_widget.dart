@@ -18,25 +18,20 @@ class BtnGradient extends StatelessWidget{
   @override
   Widget build(BuildContext context){
     return InkWell(
-      child: Container(
-      width: width,
-      height: 40,
-      decoration: BoxDecoration(
-        gradient: LinearGradient(
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-          colors: [
-            bluelightColor,
-            blueColor,
-          ]),
-        borderRadius: border,
+      child: ElevatedButton(
+        onPressed: onPressed,
+        child: Container(
+            width: width,
+            height: 40,
+            decoration: BoxDecoration(
+              borderRadius: border,
+            ),
+            child: Center(child:
+            Text(text,
+              style: Theme.of(context).textTheme.button?.copyWith(fontWeight: FontWeight.bold, color: Colors.white),
+            ),
+            )),
       ),
-      child: Center(child: 
-      Text(text,
-        style: Theme.of(context).textTheme.button?.copyWith(fontWeight: FontWeight.bold, color: Colors.white),
-      ),
-    )),
-    onTap: onPressed,
     )
     ;
   }
