@@ -5,8 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 
-
-
 // ignore: must_be_immutable
 class AppWidget extends GetView {
   bool isFirstLaunch = GetStorage().read(Const.ONBOARD) ?? true;
