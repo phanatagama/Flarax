@@ -13,8 +13,13 @@ import 'package:image_picker/image_picker.dart';
 class EditProfilePage extends GetView<ProfileController> {
   @override
   Widget build(BuildContext context) {
-    return Body(
-      child: ListView(
+    return Scaffold(
+      appBar: AppBar(
+        // leading: BackButton(),
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+      ),
+      body: ListView(
         padding: EdgeInsets.symmetric(horizontal: 32),
         physics: BouncingScrollPhysics(),
         children: [
