@@ -1,16 +1,16 @@
 import 'package:flarax/app/core/values/colors.dart';
 import 'package:flutter/material.dart';
 
-class TitleAuth extends StatelessWidget{
+class TitleAuth extends StatelessWidget {
   const TitleAuth({
     Key? key,
     required this.title,
-}) : super(key: key);
+  }) : super(key: key);
 
   final title;
 
   @override
-  Widget build(BuildContext context){
+  Widget build(BuildContext context) {
     return Container(
       child: Text(
         title,

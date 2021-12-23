@@ -8,11 +8,12 @@ import 'package:flarax/app/modules/widgets/input_text_widget.dart';
 import 'package:flarax/app/modules/widgets/title_auth_widget.dart';
 import 'package:flarax/app/routes/app_pages.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
-class RegisterPage extends GetView<RegisterController>{
+class RegisterPage extends GetView<RegisterController> {
   @override
-  Widget build(BuildContext context){
+  Widget build(BuildContext context) {
     return Body(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -23,11 +24,11 @@ class RegisterPage extends GetView<RegisterController>{
           ),
           InputText(
             controller: controller.fullnameController,
-              label: Const.FULLNAME,
-              hinttext: Const.FULLNAME,
-              iconInput: null,
-              password: false,
-              width: (MediaQuery.of(context).size.width - 40),
+            label: Const.FULLNAME,
+            hinttext: Const.FULLNAME,
+            iconInput: null,
+            password: false,
+            width: (MediaQuery.of(context).size.width - 40),
           ),
           SizedBox(
             height: 15,
@@ -45,13 +46,17 @@ class RegisterPage extends GetView<RegisterController>{
           ),
           Row(
             children: [
-              InputText(
-                controller: controller.zipcodeController,
-                label: Const.ZIPCODE,
-                hinttext: Const.ZIPCODE,
-                iconInput: null,
-                password: false,
+              Container(
                 width: (MediaQuery.of(context).size.width - 72) / 2,
+                child: TextField(
+                  controller: controller.zipcodeController,
+                  decoration: InputDecoration(
+                    labelText: Const.ZIPCODE,
+                    hintText: Const.ZIPCODE,
+                  ),
+                  keyboardType:
+                      TextInputType.number, // Only numbers can be entered
+                ),
               ),
               SizedBox(
                 width: 8,
@@ -107,18 +112,17 @@ class RegisterPage extends GetView<RegisterController>{
           ),
           Center(
             child: BtnGradient(
-              text: Const.REGISTER.toUpperCase(),
-              width: MediaQuery.of(context).size.width - 86,
-              border: BorderRadius.circular(6),
-              onPressed: () => authController.register(
-                email: controller.emailController.text.trim(), 
-                password: controller.passwordController.text.trim(),
-                fullname: controller.fullnameController.text.trim(), 
-                zipcode: controller.zipcodeController.text.trim(), 
-                city: controller.cityController.text.trim(),
-                address: controller.addressController.text.trim(),
-                phoneNumber: controller.phoneController.text.trim())
-            ),
+                text: Const.REGISTER.toUpperCase(),
+                width: MediaQuery.of(context).size.width - 86,
+                border: BorderRadius.circular(6),
+                onPressed: () => authController.register(
+                    email: controller.emailController.text.trim(),
+                    password: controller.passwordController.text.trim(),
+                    fullname: controller.fullnameController.text.trim(),
+                    zipcode: controller.zipcodeController.text.trim(),
+                    city: controller.cityController.text.trim(),
+                    address: controller.addressController.text.trim(),
+                    phoneNumber: controller.phoneController.text.trim())),
           ),
           SizedBox(
             height: 40,

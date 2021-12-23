@@ -5,10 +5,13 @@ import 'package:get/get.dart';
 
 class PostController extends ProductController {
   final TextEditingController productNameController = TextEditingController();
-  final TextEditingController productDescriptionController = TextEditingController();
-  final TextEditingController productAddressController = TextEditingController();
+  final TextEditingController productDescriptionController =
+      TextEditingController();
+  final TextEditingController productAddressController =
+      TextEditingController();
   final TextEditingController productCityController = TextEditingController();
-  final TextEditingController productProvinceController = TextEditingController();
+  final TextEditingController productProvinceController =
+      TextEditingController();
   RxString chosenValue = 'Fashion'.obs;
   RxString photoUrl = Const.PHOTOURL.obs;
 }

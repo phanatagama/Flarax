@@ -1,55 +1,86 @@
-import 'package:flarax/app/core/utils/auth_helper.dart';
+import 'dart:io';
+import 'package:flarax/app/core/utils/image_uploader.dart';
 import 'package:flarax/app/core/values/constant.dart';
-import 'package:flarax/app/data/models/user_model.dart';
-import 'package:flarax/app/modules/profile/widgets/appbar_widget.dart';
+import 'package:flarax/app/modules/profile/controller/profile_controller.dart';
+import 'package:flarax/app/modules/widgets/body.dart';
 import 'package:flarax/app/modules/widgets/button_widget.dart';
 import 'package:flarax/app/modules/widgets/profile_widget.dart';
 import 'package:flarax/app/modules/profile/widgets/textfield_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:image_picker/image_picker.dart';
 
-class EditProfilePage extends StatefulWidget {
-  @override
-  _EditProfilePageState createState() => _EditProfilePageState();
-}
-
-class _EditProfilePageState extends State<EditProfilePage> {
-  UserModel? user = authController.firestoreUser.value;
-
+class EditProfilePage extends GetView<ProfileController> {
   @override
   Widget build(BuildContext context) {
-          return Scaffold(
-            appBar: buildAppBar(context),
-            body: ListView(
-              padding: EdgeInsets.symmetric(horizontal: 32),
-              physics: BouncingScrollPhysics(),
-              children: [
-                ProfileWidget(
-                  imagePath: user?.photoUrl ?? Const.PHOTOURL,
-                  isEdit: true,
-                  onClicked: () {},
-                ),
-                const SizedBox(height: 24),
-                TextFieldWidget(
-                  label: Const.FULLNAME,
-                  text: "${user?.fullname}",
-                  onChanged: (name) {},
-                ),
-                const SizedBox(height: 24),
-                TextFieldWidget(
-                  label: Const.EMAIL,
-                  text: "${user?.email}",
-                  onChanged: (email) {},
-                ),
-                const SizedBox(height: 24),
-                // TextFieldWidget(
-                //   label: 'About',
-                //   text: user.about,
-                //   maxLines: 5,
-                //   onChanged: (about) {},
-                // ),
-                ButtonWidget(text: Const.SAVE, onClicked: (){})
-              ],
+    return Body(
+      child: ListView(
+        padding: EdgeInsets.symmetric(horizontal: 32),
+        physics: BouncingScrollPhysics(),
+        children: [
+          Obx(
+            () => ProfileWidget(
+              imagePath: controller.photoUrl.value,
+              isEdit: true,
+              onClicked: () async {
+                XFile? file = await getImageFromGallery();
+                String imagePath = await uploadImage(
+                  File(file?.path ?? controller.photoUrl.value),
+                );
+                controller.photoUrl.value = imagePath;
+              },
             ),
-          );
+          ),
+          const SizedBox(height: 24),
+          TextFieldWidget(
+            status: false,
+            controller: controller.emailController,
+            label: Const.EMAIL,
+            text: "${controller.dataUser.value?.email}",
+            onChanged: (email) {},
+          ),
+          const SizedBox(height: 24),
+          TextFieldWidget(
+            controller: controller.fullnameController,
+            label: Const.FULLNAME,
+            text: "${controller.dataUser.value?.fullname}",
+            onChanged: (name) {},
+          ),
+          const SizedBox(height: 24),
+          TextFieldWidget(
+            controller: controller.phoneNumberController,
+            label: Const.PHONE,
+            text: "${controller.dataUser.value?.phoneNumber}",
+            onChanged: (phone) {},
+          ),
+          const SizedBox(height: 24),
+          Row(children: [
+            Expanded(
+                child: ButtonWidget(
+                    text: Const.BACK, onClicked: () => Get.back())),
+            SizedBox(
+              width: 8,
+            ),
+            Expanded(
+                child: ButtonWidget(
+                    text: Const.SAVE,
+                    onClicked: () {
+                      ProfileController.updateUser(
+                          uid: controller.dataUser.value!.uid,
+                          email: controller.emailController.text.trim(),
+                          fullname: controller.fullnameController.text.trim(),
+                          phoneNumber:
+                              controller.phoneNumberController.text.trim(),
+                          photoUrl: controller.photoUrl.value);
+                      Get.snackbar(
+                        "Success",
+                        "Profile has been Changed",
+                        snackPosition: SnackPosition.BOTTOM,
+                      );
+                    }))
+          ])
+        ],
+      ),
+    );
   }
 }
