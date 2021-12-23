@@ -8,7 +8,8 @@ var userResponse = {
   "email": "root@gmail.com",
   "fullname": "root",
   "phoneNumber": "+6285156670181",
-  "photoUrl": "https://www.gravatar.com/avatar/2fc2880ff4c97d37fa58608a16a4cd72.png?s=200&d=retro&r=pg",
+  "photoUrl":
+      "https://www.gravatar.com/avatar/2fc2880ff4c97d37fa58608a16a4cd72.png?s=200&d=retro&r=pg",
   "chattingWith": null,
 };
 
@@ -25,7 +26,8 @@ var productResponse = {
   "productDescription": "Meja Bekas terbuat dari kayu kalimantan",
   "productStatus": "Available",
   "productCategory": "Perlengkapan",
-  "productPictureUrl": "https://firebasestorage.googleapis.com/v0/b/flarax-app.appspot.com/o/image_picker-1368171116.jpg?alt=media&token=260a9356-2712-41b0-a6bc-6d5ea7c0ca16",
+  "productPictureUrl":
+      "https://firebasestorage.googleapis.com/v0/b/flarax-app.appspot.com/o/image_picker-1368171116.jpg?alt=media&token=260a9356-2712-41b0-a6bc-6d5ea7c0ca16",
   "productProvince": "Papua",
   "productCity": "Timika",
   "productAddress": "Jalan Buglax 5 Gang Mawar",
