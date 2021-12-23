@@ -7,7 +7,7 @@ import 'package:get/get.dart';
 
 class DetailController extends GetxController {
   RxBool isMyProduct = false.obs;
-  Rx<UserModel> userChat = Const.USERDUMMY.obs;
+  Rx<UserModel> userChat = Const.userDummy.obs;
 
   checkIsMyProduct(String id) async {
     var uid = await auth.currentUser?.uid;

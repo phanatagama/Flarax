@@ -139,7 +139,7 @@ class HomeController extends GetxController {
                       topRight: Radius.circular(10),
                     ),
                     child: CachedNetworkImage(
-                        imageUrl: Const.PRODUCTDUMMY.productPictureUrl,
+                        imageUrl: Const.productDummy.productPictureUrl,
                         placeholder: (context, url) =>
                             const CircularProgressIndicator(),
                         errorWidget: (context, url, error) =>
@@ -155,7 +155,7 @@ class HomeController extends GetxController {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        Const.PRODUCTDUMMY.productName,
+                        Const.productDummy.productName,
                         style: Theme.of(Get.context!)
                             .textTheme
                             .headline6!
@@ -173,7 +173,7 @@ class HomeController extends GetxController {
                         ),
                         padding: EdgeInsets.all(8),
                         child: Text(
-                          Const.PRODUCTDUMMY.productStatus,
+                          Const.productDummy.productStatus,
                           style: Theme.of(Get.context!)
                               .textTheme
                               .caption!
@@ -197,7 +197,7 @@ class HomeController extends GetxController {
                           ),
                           Expanded(
                             child: Text(
-                              '${Const.PRODUCTDUMMY.productProvince}',
+                              '${Const.productDummy.productProvince}',
                               style: Theme.of(Get.context!)
                                   .textTheme
                                   .subtitle2!

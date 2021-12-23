@@ -5,11 +5,11 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 
-GetStorage prefs = GetStorage();
+
 
 // ignore: must_be_immutable
 class AppWidget extends GetView {
-  bool isFirstLaunch = prefs.read(Const.ONBOARD) ?? true;
+  bool isFirstLaunch = GetStorage().read(Const.ONBOARD) ?? true;
 
   @override
   Widget build(BuildContext context) {
