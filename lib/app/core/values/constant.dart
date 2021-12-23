@@ -71,7 +71,7 @@ class Const {
   static const HAVEACCOUNT = "Already have an Account ? ";
   static const DONTHAVEACCOUNT = "Don’t have an Account ? ";
   static const CHOOSECATEGORY = "Please choose a category";
-  static ProductModel PRODUCTDUMMY = ProductModel.fromMap({
+  static ProductModel productDummy = ProductModel.fromMap({
     "uid": "L33t1337",
     "productName": "Meja",
     "productDescription": "Meja Bekas terbuat dari kayu kalimantan",
@@ -84,7 +84,7 @@ class Const {
     "productAddress": "Jalan Buglax 5 Gang Mawar",
     "createdUpdatedAt": "2021-12-18T20:30:50.564753",
   });
-  static UserModel USERDUMMY = UserModel(
+  static UserModel userDummy = UserModel(
       uid: 'xxx',
       email: HINTEMAIL,
       fullname: FULLNAME,

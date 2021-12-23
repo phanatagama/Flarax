@@ -48,7 +48,6 @@ class AuthController extends GetxController {
   }
 
   _setInitialScreenGoogle(GoogleSignInAccount? googleSignInAccount) {
-    print(googleSignInAccount);
     if (googleSignInAccount?.id != null) {
       firestoreUser.bindStream(streamFirestoreUser());
     }
@@ -69,8 +68,6 @@ class AuthController extends GetxController {
 
   //Streams the firestore user from the firestore collection
   Stream<UserModel> streamFirestoreUser() {
-    print('streamFirestoreUser()');
-
     return firebaseFirestore
         .doc('/users/${firebaseUser.value!.uid}')
         .snapshots()
@@ -106,7 +103,7 @@ class AuthController extends GetxController {
               .where(Const.UID, isEqualTo: firebaseUser.value!.uid)
               .get();
           final List<DocumentSnapshot> documents = result.docs;
-          if (documents.length == 0) {
+          if (documents.isEmpty) {
             firebaseUser.value!.sendEmailVerification();
             UserModel _newUser = UserModel(
                 uid: firebaseUser.value!.uid,
@@ -142,7 +139,6 @@ class AuthController extends GetxController {
         e.toString(),
         snackPosition: SnackPosition.BOTTOM,
       );
-      print(e.toString());
     }
   }
 
@@ -176,7 +172,13 @@ class AuthController extends GetxController {
         _createUserFirestore(_newUser, result.user!);
         _createAddressFirestore(_newAddress, result.user!);
       });
-    } catch (firebaseAuthException) {}
+    } catch (firebaseAuthException) {
+      Get.snackbar(
+        "Error",
+        firebaseAuthException.toString(),
+        snackPosition: SnackPosition.BOTTOM,
+      );
+    }
   }
 
   void login(String email, password) async {
