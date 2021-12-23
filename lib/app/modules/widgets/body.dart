@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 
-class Body extends StatelessWidget{
+class Body extends StatelessWidget {
   const Body({
     Key? key,
     required this.child,
-}) : super(key: key);
+  }) : super(key: key);
 
   final Widget child;
 
   @override
-  Widget build(BuildContext context){
+  Widget build(BuildContext context) {
     return Scaffold(
       appBar: null,
       // AppBar(

@@ -1,5 +1,6 @@
 part of './app_pages.dart';
-abstract class Routes{
+
+abstract class Routes {
   static const INITIAL = '/';
   static const HOME = '/home';
   static const MAIN = '/main';
@@ -10,4 +11,7 @@ abstract class Routes{
   static const PRODUCT = '/product';
   static const POSTPRODUCT = '/postproduct';
   static const EDITPRODUCT = '/editproduct';
+  static const CHAT = '/chat';
+  static const MESSAGE = '/message';
+  static const PHOTOVIEW = '/photoview';
 }

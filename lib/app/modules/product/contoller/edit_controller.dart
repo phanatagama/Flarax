@@ -7,22 +7,26 @@ import 'package:get/get.dart';
 
 class EditProductController extends ProductController {
   final TextEditingController productNameController = TextEditingController();
-  final TextEditingController productDescriptionController = TextEditingController();
-  final TextEditingController productAddressController = TextEditingController();
+  final TextEditingController productDescriptionController =
+      TextEditingController();
+  final TextEditingController productAddressController =
+      TextEditingController();
   final TextEditingController productCityController = TextEditingController();
-  final TextEditingController productProvinceController = TextEditingController();
+  final TextEditingController productProvinceController =
+      TextEditingController();
   RxString chosenValue = Const.CATEGORYPRODUCT[0].obs;
   RxString photoUrl = Const.PHOTOURL.obs;
   late Rxn<ProductModel> dataProduct = Rxn<ProductModel>();
 
-  getDataProduct() async{
-    DocumentSnapshot snapshots = await ProductController.getProductDataWithIdFuture(Get.arguments);
-    Map <String, dynamic> dataProduct = snapshots.data() as Map<String, dynamic>;
+  getDataProduct() async {
+    DocumentSnapshot snapshots =
+        await ProductController.getProductDataWithIdFuture(Get.arguments);
+    Map<String, dynamic> dataProduct = snapshots.data() as Map<String, dynamic>;
     return ProductModel.fromMap(dataProduct);
   }
 
   @override
-  void onInit() async{
+  void onInit() async {
     super.onInit();
     dataProduct.value = await getDataProduct();
     setDataToField();

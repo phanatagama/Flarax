@@ -22,38 +22,43 @@ class ProductController extends GetxController {
   }
 
   void filterProduct() {
-      itemsAfterFilter.value = [];
-      filterOptions.forEach((category) { 
-        itemsAfterFilter.value += items.where((item) { 
-          print(item["productCategory"].contains(category));
-          return item["productCategory"].contains(category);
-          }).toList();
-        itemsAfterFilter.refresh();
-      });
-
-      if (filterOptions.isEmpty) {
-      itemsAfterFilter.value = items.where((item) => item["productName"].toLowerCase().contains(keyword.toLowerCase())).toList();
-      } else if (itemsAfterFilter.isNotEmpty) {
-        itemsAfterFilter.value = itemsAfterFilter.where((item) => item["productName"].toLowerCase().contains(keyword.toLowerCase())).toList();
-      }
+    itemsAfterFilter.value = [];
+    filterOptions.forEach((category) {
+      itemsAfterFilter.value += items.where((item) {
+        print(item["productCategory"].contains(category));
+        return item["productCategory"].contains(category);
+      }).toList();
       itemsAfterFilter.refresh();
+    });
+
+    if (filterOptions.isEmpty) {
+      itemsAfterFilter.value = items
+          .where((item) =>
+              item["productName"].toLowerCase().contains(keyword.toLowerCase()))
+          .toList();
+    } else if (itemsAfterFilter.isNotEmpty) {
+      itemsAfterFilter.value = itemsAfterFilter
+          .where((item) =>
+              item["productName"].toLowerCase().contains(keyword.toLowerCase()))
+          .toList();
+    }
+    itemsAfterFilter.refresh();
   }
 
   static CollectionReference productCollection =
-  firebaseFirestore.collection('products');
+      firebaseFirestore.collection('products');
 
-  static Future<void> updateProduct({
-    required String productId,
-    required String uid,
-    required String productName,
-    required String productDescription,
-    required String productStatus,
-    required String productCategory,
-    required String productPictureUrl,
-    required String productProvince,
-    required String productCity,
-    required String productAddress
-  }) async {
+  static Future<void> updateProduct(
+      {required String productId,
+      required String uid,
+      required String productName,
+      required String productDescription,
+      required String productStatus,
+      required String productCategory,
+      required String productPictureUrl,
+      required String productProvince,
+      required String productCity,
+      required String productAddress}) async {
     ProductModel product = ProductModel(
       uid: uid,
       productName: productName,
@@ -69,26 +74,25 @@ class ProductController extends GetxController {
     await productCollection.doc(productId).update(product.toJson());
   }
 
-  static Future<void> addProduct({
-    required String productName,
-    required String productDescription,
-    required String productCategory,
-    required String productPictureUrl,
-    required String productProvince,
-    required String productCity,
-    required String productAddress
-  }) async {
+  static Future<void> addProduct(
+      {required String productName,
+      required String productDescription,
+      required String productCategory,
+      required String productPictureUrl,
+      required String productProvince,
+      required String productCity,
+      required String productAddress}) async {
     ProductModel product = ProductModel(
-        uid: auth.currentUser!.uid,
-        productName: productName,
-        productDescription: productDescription,
-        productStatus: 'Available',
-        productCategory: productCategory,
-        productPictureUrl: productPictureUrl,
-        productProvince: productProvince,
-        productCity: productCity,
-        productAddress: productAddress,
-        createdUpdatedAt: DateTime.now().toIso8601String(),
+      uid: auth.currentUser!.uid,
+      productName: productName,
+      productDescription: productDescription,
+      productStatus: 'Available',
+      productCategory: productCategory,
+      productPictureUrl: productPictureUrl,
+      productProvince: productProvince,
+      productCity: productCity,
+      productAddress: productAddress,
+      createdUpdatedAt: DateTime.now().toIso8601String(),
     );
     await productCollection.add(product.toJson());
   }
@@ -103,9 +107,12 @@ class ProductController extends GetxController {
     return productCollection.snapshots();
   }
 
+  static Stream<QuerySnapshot> getLimitedProducts() {
+    return productCollection.limit(5).snapshots();
+  }
+
   static Stream<QuerySnapshot> getAllUsersProducts(String uid) {
-    return productCollection.where('uid', isEqualTo: uid)
-        .snapshots();
+    return productCollection.where('uid', isEqualTo: uid).snapshots();
   }
 
   static Stream<DocumentSnapshot> getProductDataWithId(String id) {
@@ -115,5 +122,4 @@ class ProductController extends GetxController {
   static Future<DocumentSnapshot> getProductDataWithIdFuture(String id) async {
     return await productCollection.doc(id).get();
   }
-
 }

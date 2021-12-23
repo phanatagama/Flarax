@@ -21,33 +21,33 @@ class LabelBelowIcon extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: <Widget>[
-          isCircleEnabled
-              ? CircleAvatar(
-                  backgroundColor: circleColor,
-                  radius: 20.0,
-                  child: Icon(
-                    icon,
-                    size: 12.0,
-                    color: iconColor,
-                  ),
-                )
-              : Icon(
+      mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: <Widget>[
+        isCircleEnabled
+            ? CircleAvatar(
+                backgroundColor: circleColor,
+                radius: 20.0,
+                child: Icon(
                   icon,
-                  size: 23.0,
+                  size: 12.0,
                   color: iconColor,
                 ),
-          SizedBox(
-            height: betweenHeight,
-          ),
-          Text(
-            label,
-            textAlign: TextAlign.center,
-            style: TextStyle(fontFamily: ralewayFont),
-          )
-        ],
-      );
+              )
+            : Icon(
+                icon,
+                size: 23.0,
+                color: iconColor,
+              ),
+        SizedBox(
+          height: betweenHeight,
+        ),
+        Text(
+          label,
+          textAlign: TextAlign.center,
+          style: TextStyle(fontFamily: ralewayFont),
+        )
+      ],
+    );
   }
 }

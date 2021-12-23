@@ -1,10 +1,11 @@
 import 'dart:convert';
 
-ProductModel userFromJson(String str) => ProductModel.fromJson(json.decode(str));
+ProductModel userFromJson(String str) =>
+    ProductModel.fromJson(json.decode(str));
 
 String userToJson(ProductModel data) => json.encode(data.toJson());
 
-class ProductModel{
+class ProductModel {
   ProductModel({
     required this.uid,
     required this.productName,
@@ -30,17 +31,17 @@ class ProductModel{
   String createdUpdatedAt;
 
   factory ProductModel.fromJson(Map<String, dynamic> json) => ProductModel(
-    uid: json["uid"],
-    productName: json["productName"],
-    productDescription: json["productDescription"],
-    productStatus: json["productStatus"],
-    productCategory: json["productCategory"],
-    productPictureUrl: json["productPictureUrl"],
-    productProvince: json["productProvince"],
-    productCity: json["productCity"],
-    productAddress: json["productAddress"],
-    createdUpdatedAt: json["createdUpdatedAt"],
-  );
+        uid: json["uid"],
+        productName: json["productName"],
+        productDescription: json["productDescription"],
+        productStatus: json["productStatus"],
+        productCategory: json["productCategory"],
+        productPictureUrl: json["productPictureUrl"],
+        productProvince: json["productProvince"],
+        productCity: json["productCity"],
+        productAddress: json["productAddress"],
+        createdUpdatedAt: json["createdUpdatedAt"],
+      );
 
   factory ProductModel.fromMap(Map<String, dynamic> data) {
     return ProductModel(
@@ -58,15 +59,15 @@ class ProductModel{
   }
 
   Map<String, dynamic> toJson() => {
-    "uid": uid,
-    "productName": productName,
-    "productDescription": productDescription,
-    "productStatus": productStatus,
-    "productCategory": productCategory,
-    "productPictureUrl": productPictureUrl,
-    "productProvince": productProvince,
-    "productCity": productCity,
-    "productAddress": productAddress,
-    "createdUpdatedAt": createdUpdatedAt,
-  };
+        "uid": uid,
+        "productName": productName,
+        "productDescription": productDescription,
+        "productStatus": productStatus,
+        "productCategory": productCategory,
+        "productPictureUrl": productPictureUrl,
+        "productProvince": productProvince,
+        "productCity": productCity,
+        "productAddress": productAddress,
+        "createdUpdatedAt": createdUpdatedAt,
+      };
 }

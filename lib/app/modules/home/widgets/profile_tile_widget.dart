@@ -13,6 +13,7 @@ class ProfileTile extends StatelessWidget {
       children: <Widget>[
         Text(
           title,
+          overflow: TextOverflow.ellipsis,
           style: TextStyle(
               fontSize: 20.0, fontWeight: FontWeight.w700, color: textColor),
         ),

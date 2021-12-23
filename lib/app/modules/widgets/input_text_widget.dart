@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 
-class InputText extends StatelessWidget{
-  const InputText({
-    Key? key,
-    required this.label,
-    required this.hinttext,
-    required this.iconInput,
-    this.password = false,
-    required this.width,
-    required this.controller
-  }) : super(key: key);
+class InputText extends StatelessWidget {
+  const InputText(
+      {Key? key,
+      required this.label,
+      required this.hinttext,
+      required this.iconInput,
+      this.password = false,
+      required this.width,
+      required this.controller})
+      : super(key: key);
 
   final String label;
   final String hinttext;
@@ -19,7 +19,7 @@ class InputText extends StatelessWidget{
   final controller;
 
   @override
-  Widget build(BuildContext context){
+  Widget build(BuildContext context) {
     return Container(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,

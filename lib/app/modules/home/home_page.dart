@@ -1,10 +1,12 @@
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flarax/app/core/utils/auth_helper.dart';
 import 'package:flarax/app/core/values/colors.dart';
 import 'package:flarax/app/core/values/constant.dart';
 import 'package:flarax/app/modules/home/controller/home_controller.dart';
 import 'package:flarax/app/modules/home/widgets/list_banner_widget.dart';
 import 'package:flarax/app/modules/home/widgets/menu_row_widget.dart';
+import 'package:flarax/app/modules/product/contoller/product_controller.dart';
 import 'package:flarax/app/modules/widgets/background_widget.dart';
 import 'package:flarax/app/modules/home/widgets/profile_tile_widget.dart';
 import 'package:flarax/app/routes/app_pages.dart';
@@ -23,22 +25,30 @@ class HomePage extends GetView<HomeController> {
               new Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
-                  Obx(() => ClipOval(
-                    child: Material(
-                      color: Colors.transparent,
-                      child: Ink.image(
-                        image: NetworkImage(authController.firestoreUser.value?.photoUrl ?? Const.PHOTOURL),
-                        fit: BoxFit.cover,
-                        width: 40,
-                        height: 40,
-                        child: InkWell(onTap: (){})),
+                  Obx(
+                    () => ClipOval(
+                      child: Material(
+                        color: Colors.transparent,
+                        child: Ink.image(
+                            image: NetworkImage(
+                                authController.firestoreUser.value?.photoUrl ??
+                                    Const.PHOTOURL),
+                            fit: BoxFit.cover,
+                            width: 40,
+                            height: 40,
+                            child: InkWell(
+                                onTap: () => Get.toNamed(Routes.PROFILE))),
                       ),
-                    ),),
-                  Obx(() => new ProfileTile(
-                    title: "Hi, ${authController.firestoreUser.value?.fullname}",
-                    subtitle: Const.WELCOME,
-                    textColor: Colors.white,
-                  ),),
+                    ),
+                  ),
+                  Obx(
+                    () => new ProfileTile(
+                      title:
+                          "Hi, ${authController.firestoreUser.value?.fullname}",
+                      subtitle: Const.WELCOME,
+                      textColor: Colors.white,
+                    ),
+                  ),
                   new IconButton(
                     icon: new Icon(
                       Icons.logout,
@@ -46,7 +56,7 @@ class HomePage extends GetView<HomeController> {
                     ),
                     onPressed: () {
                       authController.signOut();
-                      },
+                    },
                   )
                 ],
               ),
@@ -72,7 +82,8 @@ class HomePage extends GetView<HomeController> {
                   child: TextField(
                     onTap: () => Get.toNamed(Routes.PRODUCT),
                     decoration: InputDecoration(
-                        border: InputBorder.none, hintText: Const.HINTSEARCHPRODUCT),
+                        border: InputBorder.none,
+                        hintText: Const.HINTSEARCHPRODUCT),
                   ),
                 ),
                 Icon(Icons.menu),
@@ -105,38 +116,11 @@ class HomePage extends GetView<HomeController> {
                     thirdLabel: Const.POSTING,
                     thirdIconCircleColor: greyColor,
                     thirdOnPressed: () => Get.toNamed(Routes.POSTPRODUCT),
-                    fourthIcon: FontAwesomeIcons.locationArrow,
-                    fourthLabel: "My Product",
+                    fourthIcon: FontAwesomeIcons.commentDots,
+                    fourthLabel: Const.MESSAGE,
                     fourthIconCircleColor: Colors.indigo,
+                    fourthOnPressed: () => Get.toNamed(Routes.MESSAGE),
                   ),
-                  // DashboardMenuRow(
-                  //   firstIcon: FontAwesomeIcons.images,
-                  //   firstLabel: "Albums",
-                  //   firstIconCircleColor: Colors.red,
-                  //   secondIcon: FontAwesomeIcons.solidHeart,
-                  //   secondLabel: "Likes",
-                  //   secondIconCircleColor: Colors.teal,
-                  //   thirdIcon: FontAwesomeIcons.solidNewspaper,
-                  //   thirdLabel: "Articles",
-                  //   thirdIconCircleColor: Colors.lime,
-                  //   fourthIcon: FontAwesomeIcons.solidCommentDots,
-                  //   fourthLabel: "Reviews",
-                  //   fourthIconCircleColor: Colors.amber,
-                  // ),
-                  // DashboardMenuRow(
-                  //   firstIcon: FontAwesomeIcons.footballBall,
-                  //   firstLabel: "Sports",
-                  //   firstIconCircleColor: Colors.cyan,
-                  //   secondIcon: FontAwesomeIcons.solidStar,
-                  //   secondLabel: "Fav",
-                  //   secondIconCircleColor: Colors.redAccent,
-                  //   thirdIcon: FontAwesomeIcons.blogger,
-                  //   thirdLabel: "Blogs",
-                  //   thirdIconCircleColor: Colors.pink,
-                  //   fourthIcon: FontAwesomeIcons.wallet,
-                  //   fourthLabel: "Wallet",
-                  //   fourthIconCircleColor: Colors.brown,
-                  // ),
                 ],
               ),
             ),
@@ -144,40 +128,94 @@ class HomePage extends GetView<HomeController> {
         ),
       );
 
-  Widget bannerImage() => Column(
-    children: [
-      CarouselSlider(
-        options: CarouselOptions(
-          autoPlay: true,
-          autoPlayInterval: Duration(seconds: 6),
-          autoPlayAnimationDuration: Duration(milliseconds: 1500),
-          pauseAutoPlayOnTouch: true,
-          aspectRatio: 2.0,
-          onPageChanged: (index, reason) {
-            controller.current.value = index;
-          }
+  Widget bannerImage() => Column(children: [
+        CarouselSlider(
+          options: CarouselOptions(
+              autoPlay: true,
+              autoPlayInterval: Duration(seconds: 6),
+              autoPlayAnimationDuration: Duration(milliseconds: 1500),
+              pauseAutoPlayOnTouch: true,
+              aspectRatio: 2.0,
+              onPageChanged: (index, reason) {
+                controller.current.value = index;
+              }),
+          items: child,
+          carouselController: controller.buttonCarouselController,
         ),
-        items: child,
-        carouselController: controller.buttonCarouselController,
-        
-      ),
-      Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: Const.BANNERLIST.asMap().map(
-          (index, url) {
-            return MapEntry(index,Obx(() => Container(
-              width: 8.0,
-              height: 8.0,
-              margin: EdgeInsets.symmetric(vertical: 4.0, horizontal: 2.0),
-              decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: controller.current == index
-                      ? blueColor
-                      : bluelightColor),
-            )));
-          },).values.toList(),
-      ),
-    ]);
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: Const.BANNERLIST
+              .asMap()
+              .map(
+                (index, url) {
+                  return MapEntry(
+                      index,
+                      Obx(() => Container(
+                            width: 8.0,
+                            height: 8.0,
+                            margin: EdgeInsets.symmetric(
+                                vertical: 4.0, horizontal: 2.0),
+                            decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                                color: controller.current == index
+                                    ? blueColor
+                                    : bluelightColor),
+                          )));
+                },
+              )
+              .values
+              .toList(),
+        ),
+        SizedBox(
+          height: 8,
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Padding(
+              padding: EdgeInsets.all(16),
+              child: Text(
+                Const.PRODUCTS,
+                style: Theme.of(Get.context!)
+                    .textTheme
+                    .headline6!
+                    .copyWith(fontWeight: FontWeight.bold),
+              ),
+            ),
+            GestureDetector(
+                onTap: () => Get.toNamed(Routes.PRODUCT),
+                child: Padding(
+                  padding: EdgeInsets.all(16),
+                  child: Text(
+                    Const.ALLPRODUCT,
+                    style: Theme.of(Get.context!)
+                        .textTheme
+                        .caption!
+                        .copyWith(color: blueColor),
+                  ),
+                ))
+          ],
+        ),
+        StreamBuilder(
+          stream: ProductController.getLimitedProducts(),
+          builder:
+              (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshots) {
+            if (snapshots.hasData) {
+              if (snapshots.data!.docs.isEmpty) {}
+              controller.items.value = snapshots.data!.docs;
+              return Obx(() => CarouselSlider(
+                    options: CarouselOptions(
+                      autoPlay: false,
+                      pauseAutoPlayOnTouch: true,
+                      aspectRatio: 1.5,
+                    ),
+                    items: controller.getListProduct(),
+                  ));
+            }
+            return Container();
+          },
+        ),
+      ]);
 
   Widget bannerCard() => Padding(
         padding: const EdgeInsets.all(8.0),
@@ -196,25 +234,38 @@ class HomePage extends GetView<HomeController> {
                   children: <Widget>[
                     Text(
                       Const.CARDTITLE,
-                      style: Theme.of(Get.context!).textTheme.caption!.copyWith(color: Colors.white, fontWeight: FontWeight.w900),
+                      style: Theme.of(Get.context!).textTheme.caption!.copyWith(
+                          color: Colors.white, fontWeight: FontWeight.w900),
                     ),
-                    SizedBox(height: 8,),
-                   Text(
-                  Const.CARDBODY,
-                  style: Theme.of(Get.context!).textTheme.overline!.copyWith(color: Colors.white),
-                )
+                    SizedBox(
+                      height: 8,
+                    ),
+                    Text(
+                      Const.CARDBODY,
+                      style: Theme.of(Get.context!)
+                          .textTheme
+                          .overline!
+                          .copyWith(color: Colors.white),
+                    )
                   ],
                 ),
-                Material(
-                      color: Colors.white,
-                      shape: StadiumBorder(),
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Text(
-                          Const.CONTINUE,
-                          style: Theme.of(Get.context!).textTheme.button!.copyWith(color: blueColor),
+                GestureDetector(
+                  onTap: () => Get.toNamed(Routes.PRODUCT),
+                  child: Material(
+                    color: Colors.white,
+                    shape: StadiumBorder(),
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text(
+                        Const.CONTINUE,
+                        style: Theme.of(Get.context!)
+                            .textTheme
+                            .button!
+                            .copyWith(color: blueColor),
                       ),
-                    ),)
+                    ),
+                  ),
+                )
               ],
             ),
           ),
