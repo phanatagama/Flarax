@@ -7,10 +7,15 @@
 <img src="https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white" />
 <img src="https://img.shields.io/badge/Visual%20Studio%20Code-0078d7.svg?style=for-the-badge&logo=visual-studio-code&logoColor=white" />
   </p>
-  
-# Flarax
-
-Flarax adalah aplikasi yang memberikan informasi barang bekas gratis yang masih layak untuk dipakai
+  <p align="center">
+    Flarax adalah aplikasi yang memberikan informasi barang bekas gratis yang masih layak dipakai
+    <br />
+    <a href="https://github.com/MochArisandiJayanto/Flarax/releases/download/v.1.0.0-beta/Flarax-App-Beta.apk">Download App</a>
+    ·
+    <a href="https://github.com/MochArisandiJayanto/Flarax/issues/new">Report Bug</a>
+    ·
+    <a href="https://drive.google.com/drive/folders/1-rIitoAolhgqZzkIKAcjSvwsQQABDPc8">Demo Video</a>
+  </p>
 
 ## 💡 Background
 Barang bekas terdiri dari berbagai ukuran mulai dari yang kecil seperti baju hingga yang besar seperti kulkas atau lemari. Ketika seseorang membeli sebuah produk baru tidak jarang mereka perlu menyingkirkan barang bekas yang memenuhi ruangan di rumah. Orang-orang tidak bisa dengan sembarangan membuang barang-barang bekas di tempat sampah depan rumah. Beberapa dari barang bekas tersebut masih memiliki nilai dan masih layak untuk digunakan. Meskipun bisa dijual, tidak mudah bagi individu rumah tangga/perorangan untuk menjual barang bekas dengan cepat di marketplace yang terdiri dari ribuan seller.
@@ -29,6 +34,10 @@ Ini merupakan pertama kalinya kami belajar pemrograman mobile. Kami mencoba meng
 Flarax adalah aplikasi mobile yang menggunakan Flutter sebagai framework. Data dari pengguna dikirim dan disimpan dalam database Firebase. kami memakai beberapa library extra untuk mempermudah dan mempercepat pekerjaan seperti CachedImageNetwork untuk melakukan optimasi dan caching gambar.
 
 ## 🛠️ Tech Stack Used
+| Dart      | Flutter      |Firebase      | GetX      | VSCode      | Figma      | 
+|------------|-------------|-------------|-------------|-------------|-------------|
+| <img src="https://avatars.githubusercontent.com/u/1609975?s=280&v=4" width="150"> | <img src="https://res.cloudinary.com/startup-grind/image/upload/c_fill,dpr_2.0,f_auto,g_center,h_500,q_auto:good,w_500/v1/gcs/platform-data-dsc/events/1_ilC2Aqp5sZd1wi0CopD1Hw_zT8WoJh.png" width="150"> | <img src="https://www.gstatic.com/devrel-devsite/prod/v84e6f6a61298bbae5bb110c196e834c7f21fe3fb34e722925433ddb936d280c9/firebase/images/touchicon-180.png" width="150"> | <img src="https://blog.kakaocdn.net/dn/tTJsy/btraPuKSP5Y/34aELwuQ5eWBta1trRneU1/img.png" width="150"> | <img src="https://cdn.icon-icons.com/icons2/2107/PNG/512/file_type_vscode_icon_130084.png" width="150"> | <img src="https://lh3.googleusercontent.com/proxy/29TIqd2Hy2IpoPm603u0wCjmAUM6ZH9ChesRAAdnmDSzadCMTWwWvq2iJPTwDZYhcBdGWXklrDpqIH34M5n4NbwoM5dEUfq05-FtFMNGEMhk8jWelP0KLLs" width="150"> | 
+
 Proyek ini dibuat menggunakan boilerplate bawaan Flutter dan ditambah dengan GetX pattern untuk mempermudah pengembangan. Kami menggunakan Firebase dalam aplikasi ini sebagai realtime database yang mampu ditambahkan Google Analytics bila suatu saat diperlukan untuk pengembangan lebih lanjut.
 ### Extra Library
 - [CloudFirestore](https://pub.dev/packages/cloud_firestore) for file storage
@@ -36,6 +45,18 @@ Proyek ini dibuat menggunakan boilerplate bawaan Flutter dan ditambah dengan Get
 - [GetX](https://pub.dev/packages/get) State Manager, Dependencies Manager, Navigation Manager
 - [GoogleFonts](https://pub.dev/packages/google_fonts) for Material-Design style
 - [FontAwesomeFlutter](https://pub.dev/packages/font_awesome_flutter) plugin beautiful icons
+- [Carousel Slider](https://pub.dev/packages/carousel_slider)
+- [Get Storage](https://pub.dev/packages/get_storage)
+- [Firebase Storage](https://pub.dev/packages/firebase_storage)
+- [Image Picker](https://pub.dev/packages/image_picker)
+- [Lottie](https://pub.dev/packages/lottie)
+- [Intl](https://pub.dev/packages/intl)
+- [CachedImageNetwork](https://pub.dev/packages/cached_network_image)
+- [Url Launcher](https://pub.dev/packages/url_launcher)
+- [Introduction Screen](https://pub.dev/packages/introduction_screen)
+
+## 🔧 The problems and how we deal with it
+Tentu saja keterbatasan waktu adalah sebuah masalah bagi kami. Beberapa perencanaan harus kami tunda/hilangkan untuk mempersingkat waktu seperti pembangunan [REST API](https://github.com/MochArisandiJayanto/Flarax/blob/master/API_Design_Architecture.md) yang harus terhenti. Kami memutuskan untuk melakukan query secara langsung dengan database Firebase menggunakan future dan stream.
 
 ## 🧑‍🎓 What we learned
 Bagi sebagian dari kami, ini adalah kolaborasi pertama yang kami kerjakan, dan kami benar-benar bersemangat bahwa semua itu harus dilakukan hanya dalam 5 minggu. Memiliki waktu yang terbatas membuat kami bekerja lebih cepat dengan strategi yang lebih efisien.‎
@@ -57,6 +78,9 @@ Bagi sebagian dari kami, ini adalah kolaborasi pertama yang kami kerjakan, dan k
 - [Barang Menumpuk Tak Terpakai? Akali Dengan 5 Trik Ini | Orami](https://www.orami.co.id/magazine/barang-menumpuk-tak-terpakai-akali-dengan-5-trik-ini/)
 - [Bagaimana cara membuang barang bekas berukuran besar, misal kasur, kulkas, mesin cuci? Kemana perabot/barang bekasmu saat kamu membeli perabot baru? - Quora](https://id.quora.com/Bagaimana-cara-membuang-barang-bekas-berukuran-besar-misal-kasur-kulkas-mesin-cuci-Kemana-perabot-barang-bekasmu-saat-kamu-membeli-perabot-baru)
 - [Bagaimana caramu membuang barang-barang yang sudah tidak terpakai lagi (misalnya pakaian bekas yang sudah tidak layak pakai)? - Quora](https://id.quora.com/Bagaimana-caramu-membuang-barang-barang-yang-sudah-tidak-terpakai-lagi-misalnya-pakaian-bekas-yang-sudah-tidak-layak-pakai)
+- [Bagaimana cara membuang sampah ukuran besar seperti kasur dan lemari secara legal? - Quora](https://bit.ly/3eoe6rK)
+- [Cara Mendapatkan Barang Gratis Dari Internet - Blog Orang IT (helmykediri.com)](https://bit.ly/3FuCeVn)
+- [Barang Gratis Bisa Kamu Dapatkan di 6 Situs Ini Lho! (lifepal.co.id)](https://lifepal.co.id/media/doyan-berburu-barang-gratisan-cek-6-situs-nih/)
 
 ## 👁️ Preview/Screenshots
 
@@ -66,6 +90,9 @@ Bagi sebagian dari kami, ini adalah kolaborasi pertama yang kami kerjakan, dan k
 | :--: | :--: | :--: | :--: | 
 | ![home-page](https://user-images.githubusercontent.com/48324618/145373302-0a966fd3-e787-41c7-8c18-fc1e9ed79588.jpg) **Home Page** | ![detail-product](https://user-images.githubusercontent.com/48324618/145373659-0c01acd8-f2b8-4f9f-a2b3-320117b61593.jpg) **Detail Product** | ![product-page](https://user-images.githubusercontent.com/48324618/145373555-45e28331-c41d-47f1-96a5-74cd2d6d3728.jpg) **Product Page** | ![edit-product](https://user-images.githubusercontent.com/48324618/145373915-5c340a34-9e18-44a8-b81a-cc63882a313a.jpg) **Add/Edit Product** |
 <!-- |   -->
+
+## License
+This project is licensed under the GNU GPLv3.
 
 ## Contributors ✨
 
