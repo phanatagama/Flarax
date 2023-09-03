@@ -27,8 +27,7 @@ class Background extends GetView {
                     child: SizedBox(
                         height: deviceSize.height / 8,
                         width: deviceSize.width / 2,
-                        child: FlutterLogo(
-                        )),
+                        child: FlutterLogo()),
                   )
                 : new Container(
                     width: double.infinity,

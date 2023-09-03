@@ -10,7 +10,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class DetailPage extends GetView<DetailController> {
-  
   @override
   Widget build(BuildContext context) {
     controller.checkIsMyProduct(Get.arguments);
@@ -18,7 +17,9 @@ class DetailPage extends GetView<DetailController> {
       appBar: AppBar(
         leading: IconButton(
           icon: Icon(Icons.arrow_back, color: Colors.black),
-          onPressed: (){ Get.back(result: false);},
+          onPressed: () {
+            Get.back(result: false);
+          },
         ),
         title: Container(
           width: double.infinity,
@@ -48,7 +49,8 @@ class DetailPage extends GetView<DetailController> {
               return Center(child: CircularProgressIndicator());
             } else {
               if (snapshot.data!.exists) {
-                return productDetail(context, snapshot.data);
+                return Obx(() =>
+                    productDetail(context, snapshot.data, controller.userChat));
               }
               return Center(child: CircularProgressIndicator());
             }
@@ -58,9 +60,9 @@ class DetailPage extends GetView<DetailController> {
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 10),
         child: Obx(() => controller.isMyProduct.value
-        ? ownerBottomNavigation(Get.arguments) : contactOwner(context)
-      ),),
+            ? ownerBottomNavigation(Get.arguments)
+            : contactOwner(context, controller.userChat)),
+      ),
     );
   }
 }
-

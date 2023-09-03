@@ -10,10 +10,9 @@ import 'package:flarax/app/routes/app_pages.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-
-class LoginPage extends GetView<LoginController>{
+class LoginPage extends GetView<LoginController> {
   @override
-  Widget build(BuildContext context){
+  Widget build(BuildContext context) {
     return Body(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -49,7 +48,9 @@ class LoginPage extends GetView<LoginController>{
               text: Const.LOGIN.toUpperCase(),
               width: MediaQuery.of(context).size.width - 86,
               border: BorderRadius.circular(6),
-              onPressed: () => authController.login(controller.emailController.text.trim(), controller.passwordController.text.trim()),
+              onPressed: () => authController.login(
+                  controller.emailController.text.trim(),
+                  controller.passwordController.text.trim()),
             ),
           ),
           SizedBox(
@@ -82,7 +83,6 @@ class LoginPage extends GetView<LoginController>{
               onPressed: () => authController.signInWithGoogle(),
             ),
           ),
-
         ],
       ),
     );

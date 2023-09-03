@@ -1,8 +1,14 @@
-import 'package:flarax/app/modules/get_started/get_started.dart';
 import 'package:flarax/app/modules/home/binding/home_binding.dart';
 import 'package:flarax/app/modules/home/home_page.dart';
 import 'package:flarax/app/modules/login/binding/login_binding.dart';
 import 'package:flarax/app/modules/login/login_page.dart';
+import 'package:flarax/app/modules/message/binding/chat_binding.dart';
+import 'package:flarax/app/modules/message/binding/message_binding.dart';
+import 'package:flarax/app/modules/message/chat_page.dart';
+import 'package:flarax/app/modules/message/message_page.dart';
+import 'package:flarax/app/modules/message/widget/fullpage_widget.dart';
+import 'package:flarax/app/modules/onboarding/binding/onboard_binding.dart';
+import 'package:flarax/app/modules/onboarding/onboard_page.dart';
 import 'package:flarax/app/modules/product/binding/detail_binding.dart';
 import 'package:flarax/app/modules/product/binding/edit_binding.dart';
 import 'package:flarax/app/modules/product/binding/post_binding.dart';
@@ -19,16 +25,65 @@ import 'package:get/get.dart';
 part './app_routes.dart';
 
 abstract class AppPages {
-
   static final pages = [
-    GetPage(name: Routes.INITIAL, page:()=> GetStarted(),),
-    GetPage(name: Routes.REGISTER, page:()=> RegisterPage(), binding: RegisterBinding()),
-    GetPage(name: Routes.LOGIN, page:()=> LoginPage(), binding: LoginBinding()),
-    GetPage(name: Routes.HOME, page:()=> HomePage(), binding: HomeBinding()),
-    GetPage(name: Routes.DETAILPRODUCT, page:()=> DetailPage(), binding: DetailBinding()),
-    GetPage(name: Routes.EDITPRODUCT, page:()=> EditProductPage(), binding: EditProductBinding()),
-    GetPage(name: Routes.POSTPRODUCT, page:()=> PostPage(), binding: PostBinding()),
-    GetPage(name: Routes.PRODUCT, page:()=> ProductPage(), binding: ProductBinding()),
-    GetPage(name: Routes.PROFILE, page:()=> EditProfilePage(), binding: ProfileBinding())
+    GetPage(
+        name: Routes.INITIAL,
+        page: () => OnBoardingPage(),
+        binding: OnBoardBinding(),
+        transition: Transition.rightToLeftWithFade),
+    GetPage(
+        name: Routes.REGISTER,
+        page: () => RegisterPage(),
+        binding: RegisterBinding(),
+        transition: Transition.rightToLeftWithFade),
+    GetPage(
+        name: Routes.LOGIN,
+        page: () => LoginPage(),
+        binding: LoginBinding(),
+        transition: Transition.rightToLeftWithFade),
+    GetPage(
+        name: Routes.HOME,
+        page: () => HomePage(),
+        binding: HomeBinding(),
+        transition: Transition.rightToLeftWithFade),
+    GetPage(
+        name: Routes.DETAILPRODUCT,
+        page: () => DetailPage(),
+        binding: DetailBinding(),
+        transition: Transition.rightToLeftWithFade),
+    GetPage(
+        name: Routes.EDITPRODUCT,
+        page: () => EditProductPage(),
+        binding: EditProductBinding(),
+        transition: Transition.rightToLeftWithFade),
+    GetPage(
+        name: Routes.POSTPRODUCT,
+        page: () => PostPage(),
+        binding: PostBinding(),
+        transition: Transition.rightToLeftWithFade),
+    GetPage(
+        name: Routes.PRODUCT,
+        page: () => ProductPage(),
+        binding: ProductBinding(),
+        transition: Transition.rightToLeftWithFade),
+    GetPage(
+        name: Routes.PROFILE,
+        page: () => EditProfilePage(),
+        binding: ProfileBinding(),
+        transition: Transition.rightToLeftWithFade),
+    GetPage(
+        name: Routes.PHOTOVIEW,
+        page: () => FullPhotoPage(),
+        transition: Transition.rightToLeftWithFade),
+    GetPage(
+        name: Routes.CHAT,
+        page: () => ChatPage(),
+        binding: ChatBinding(),
+        transition: Transition.rightToLeftWithFade),
+    GetPage(
+        name: Routes.MESSAGE,
+        page: () => MessagePage(),
+        binding: MessageBinding(),
+        transition: Transition.rightToLeftWithFade)
   ];
 }
