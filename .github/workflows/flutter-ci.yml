@@ -41,14 +41,49 @@ jobs:
     - run: flutter test
     
     # Build apk.
-    - run: flutter build apk
+    - run: flutter build apk --release
     
     # Upload generated apk to the artifacts.
     - uses: actions/upload-artifact@v3
       with:
-        name: release-apk
+        name: app-release
         path: build/app/outputs/apk/release/app-release.apk
 
+  release:
+    name: Create GitHub Release
+    runs-on: ubuntu-latest
+    needs: build
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Set up Git
+        run: |
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "actions@github.com"
+      - name: Generate release tag
+        id: tag
+        run: |
+          echo "::set-output name=release_tag::Flarax_$(date +"%Y.%m.%d_%H-%M")"
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1
+        with:
+          tag_name: ${{ steps.tag.outputs.release_tag }} # Ganti dengan tag versi yang sesuai
+          release_name: Release ${{ steps.tag.outputs.release_tag }} # Ganti dengan nama release yang sesuai
+          body: |
+            Describe your release here.
+
+      - name: Upload APK
+        id: upload-release-asset
+        uses: actions/upload-release-asset@v1
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./build/app/outputs/apk/release/app-release.apk
+          asset_name: app-release.apk
+          asset_content_type: application/octet-stream
+          
   publish:
     runs-on: ubuntu-latest
     needs: [build]
