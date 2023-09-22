@@ -1,7 +1,9 @@
 name: Flutter CI
 
 # This workflow is triggered on pushes to the repository.
-
+permissions:
+  contents: write
+  
 on:
   push:
     branches:
@@ -75,4 +77,4 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           tag_name: ${{ steps.tag.outputs.release_tag }}
-          files: README.md
+          files: build/app/outputs/apk/release/app-release.apk
