@@ -10,20 +10,19 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       # 1
-      - uses: dawidd6/action-download-artifact@v2
+      - uses: actions/checkout@v3
+      
+      - uses: actions/download-artifact@v3
         with:
-          github_token: ${{secrets.GITHUB_TOKEN}}
-          workflow: flutter-ci.yml
-          workflow_conclusion: success
-          branch: master
           name: release-apk
-          path: downloads
-          if_no_artifact_found: fail
+          
+      - name: Display structure of downloaded files
+        run: ls -R
       # 2
       - name: Generate release tag
         id: tag
         run: |
-          echo "::set-output name=release_tag::Sensify_$(date +"%Y.%m.%d_%H-%M")"
+          echo "::set-output name=release_tag::Flarax_$(date +"%Y.%m.%d_%H-%M")"
       # 3
       - name: Release
         uses: softprops/action-gh-release@v1
