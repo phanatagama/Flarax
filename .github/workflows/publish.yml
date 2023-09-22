@@ -13,10 +13,10 @@ jobs:
       - uses: dawidd6/action-download-artifact@v2
         with:
           github_token: ${{secrets.GITHUB_TOKEN}}
-          workflow: build.yml
+          workflow: flutter-ci.yml
           workflow_conclusion: success
           branch: master
-          name: release.apk
+          name: release-apk
           path: downloads
           if_no_artifact_found: fail
       # 2
