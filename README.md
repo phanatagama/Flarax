@@ -1,4 +1,4 @@
-![Flarax](https://socialify.git.ci/MochArisandiJayanto/Flarax/image?description=1&descriptionEditable=%F0%9F%92%A0Made%20using%20Dart%2C%20Flutter%2C%20Firebase%20and%20GetX%F0%9F%92%A0&font=Source%20Code%20Pro&forks=1&issues=1&language=1&logo=https%3A%2F%2Fi.ibb.co%2FRpJ2W40%2F755-Converted-01.png&name=1&pattern=Brick%20Wall&pulls=1&stargazers=1&theme=Dark)
+![Flarax](https://socialify.git.ci/phanatagama/Flarax/image?description=1&descriptionEditable=%F0%9F%92%A0Made%20using%20Dart%2C%20Flutter%2C%20Firebase%20and%20GetX%F0%9F%92%A0&font=Source%20Code%20Pro&forks=1&issues=1&language=1&logo=https%3A%2F%2Fi.ibb.co%2FRpJ2W40%2F755-Converted-01.png&name=1&pattern=Brick%20Wall&pulls=1&stargazers=1&theme=Dark)
 <p align="center">
 <img src="https://img.shields.io/badge/dart-%230175C2.svg?style=for-the-badge&logo=dart&logoColor=white" />
 <img src="https://img.shields.io/badge/Flutter-%2302569B.svg?style=for-the-badge&logo=Flutter&logoColor=white" />
@@ -10,9 +10,9 @@
   <p align="center">
     Flarax adalah aplikasi yang memberikan informasi barang bekas gratis yang masih layak dipakai
     <br />
-    <a href="https://github.com/MochArisandiJayanto/Flarax/releases/download/v.1.0.0-beta/Flarax-App-Beta.apk">Download App</a>
+    <a href="https://github.com/phanatagama/Flarax/releases/download/v.1.0.0-beta/Flarax-App-Beta.apk">Download App</a>
     ·
-    <a href="https://github.com/MochArisandiJayanto/Flarax/issues/new">Report Bug</a>
+    <a href="https://github.com/phanatagama/Flarax/issues/new">Report Bug</a>
     ·
     <a href="https://drive.google.com/drive/folders/1-rIitoAolhgqZzkIKAcjSvwsQQABDPc8">Demo Video</a>
   </p>
@@ -56,7 +56,7 @@ Proyek ini dibuat menggunakan boilerplate bawaan Flutter dan ditambah dengan Get
 - [Introduction Screen](https://pub.dev/packages/introduction_screen)
 
 ## 🔧 The problems and how we deal with it
-Tentu saja keterbatasan waktu adalah sebuah masalah bagi kami. Beberapa perencanaan harus kami tunda/hilangkan untuk mempersingkat waktu seperti pembangunan [REST API](https://github.com/MochArisandiJayanto/Flarax/blob/master/API_Design_Architecture.md) yang harus terhenti. Kami memutuskan untuk melakukan query secara langsung dengan database Firebase menggunakan future dan stream.
+Tentu saja keterbatasan waktu adalah sebuah masalah bagi kami. Beberapa perencanaan harus kami tunda/hilangkan untuk mempersingkat waktu seperti pembangunan [REST API](https://github.com/phanatagama/Flarax/blob/master/API_Design_Architecture.md) yang harus terhenti. Kami memutuskan untuk melakukan query secara langsung dengan database Firebase menggunakan future dan stream.
 
 ## 🧑‍🎓 What we learned
 Bagi sebagian dari kami, ini adalah kolaborasi pertama yang kami kerjakan, dan kami benar-benar bersemangat bahwa semua itu harus dilakukan hanya dalam 5 minggu. Memiliki waktu yang terbatas membuat kami bekerja lebih cepat dengan strategi yang lebih efisien.‎
@@ -103,9 +103,9 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <!-- markdownlint-disable -->
 <table>
   <tr>
-    <td align="center"><a href="https://github.com/phanatagama"><img src="https://avatars.githubusercontent.com/u/48324618?s=100?v=4" width="100px;" alt=""/><br /><sub><b>Cahyadi Setia Phanatagama</b></sub></a><br /><a href="https://github.com/MochArisandiJayanto/Flarax/commits?author=phanatagama" title="Code">💻</a> <a href="#infra-phanatagama" title="Infrastructure (Databases, Build-Tools, etc)">🚇</a></td>
-    <td align="center"><a href="https://github.com/MochArisandiJayanto"><img src="https://avatars.githubusercontent.com/u/30518462?v=4?s=100" width="100px;" alt=""/><br /><sub><b>MOCH. ARISANDI JAYANTO</b></sub></a><br /><a href="https://github.com/MochArisandiJayanto/Flarax/commits?author=MochArisandiJayanto" title="Code">💻</a> <a href="#infra-mocharisandijayanto" title="Infrastructure (Build-Tools, etc)">🚇</a></td>
-    <td align="center"><a href="https://github.com/mrgvnn"><img src="https://avatars.githubusercontent.com/u/81848181?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Samira Rahma Aziza</b></sub></a><br /><a href="https://github.com/MochArisandiJayanto/Flarax/commits?author=mrgvnn" title="Code">💻</a> <a href="#design-mrgvnn" title="Design">🎨</a></td>
+    <td align="center"><a href="https://github.com/phanatagama"><img src="https://avatars.githubusercontent.com/u/48324618?s=100?v=4" width="100px;" alt=""/><br /><sub><b>Cahyadi Setia Phanatagama</b></sub></a><br /><a href="https://github.com/phanatagama/Flarax/commits?author=phanatagama" title="Code">💻</a> <a href="#infra-phanatagama" title="Infrastructure (Databases, Build-Tools, etc)">🚇</a></td>
+    <td align="center"><a href="https://github.com/phanatagama"><img src="https://avatars.githubusercontent.com/u/30518462?v=4?s=100" width="100px;" alt=""/><br /><sub><b>MOCH. ARISANDI JAYANTO</b></sub></a><br /><a href="https://github.com/phanatagama/Flarax/commits?author=phanatagama" title="Code">💻</a> <a href="#infra-phanatagama" title="Infrastructure (Build-Tools, etc)">🚇</a></td>
+    <td align="center"><a href="https://github.com/mrgvnn"><img src="https://avatars.githubusercontent.com/u/81848181?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Samira Rahma Aziza</b></sub></a><br /><a href="https://github.com/phanatagama/Flarax/commits?author=mrgvnn" title="Code">💻</a> <a href="#design-mrgvnn" title="Design">🎨</a></td>
   </tr>
 </table>
 
