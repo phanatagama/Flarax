@@ -36,7 +36,7 @@ Flarax adalah aplikasi mobile yang menggunakan Flutter sebagai framework. Data d
 ## 🛠️ Tech Stack Used
 | Dart      | Flutter      |Firebase      | GetX      | VSCode      | Figma      | 
 |------------|-------------|-------------|-------------|-------------|-------------|
-| <img src="https://avatars.githubusercontent.com/u/1609975?s=280&v=4" width="150"> | <img src="https://res.cloudinary.com/startup-grind/image/upload/c_fill,dpr_2.0,f_auto,g_center,h_500,q_auto:good,w_500/v1/gcs/platform-data-dsc/events/1_ilC2Aqp5sZd1wi0CopD1Hw_zT8WoJh.png" width="150"> | <img src="https://www.gstatic.com/devrel-devsite/prod/v84e6f6a61298bbae5bb110c196e834c7f21fe3fb34e722925433ddb936d280c9/firebase/images/touchicon-180.png" width="150"> | <img src="https://blog.kakaocdn.net/dn/tTJsy/btraPuKSP5Y/34aELwuQ5eWBta1trRneU1/img.png" width="150"> | <img src="https://cdn.icon-icons.com/icons2/2107/PNG/512/file_type_vscode_icon_130084.png" width="150"> | <img src="https://lh3.googleusercontent.com/proxy/29TIqd2Hy2IpoPm603u0wCjmAUM6ZH9ChesRAAdnmDSzadCMTWwWvq2iJPTwDZYhcBdGWXklrDpqIH34M5n4NbwoM5dEUfq05-FtFMNGEMhk8jWelP0KLLs" width="150"> | 
+| <img src="https://avatars.githubusercontent.com/u/1609975?s=280&v=4" width="150"> | <img src="https://res.cloudinary.com/startup-grind/image/upload/c_fill,dpr_2.0,f_auto,g_center,h_500,q_auto:good,w_500/v1/gcs/platform-data-dsc/events/1_ilC2Aqp5sZd1wi0CopD1Hw_zT8WoJh.png" width="150"> | <img src="https://cdn4.iconfinder.com/data/icons/google-i-o-2016/512/google_firebase-2-512.png" width="150"> | <img src="https://blog.kakaocdn.net/dn/tTJsy/btraPuKSP5Y/34aELwuQ5eWBta1trRneU1/img.png" width="150"> | <img src="https://cdn.icon-icons.com/icons2/2107/PNG/512/file_type_vscode_icon_130084.png" width="150"> | <img src="https://cdn-icons-png.flaticon.com/512/5968/5968705.png" width="150"> | 
 
 Proyek ini dibuat menggunakan boilerplate bawaan Flutter dan ditambah dengan GetX pattern untuk mempermudah pengembangan. Kami menggunakan Firebase dalam aplikasi ini sebagai realtime database yang mampu ditambahkan Google Analytics bila suatu saat diperlukan untuk pengembangan lebih lanjut.
 ### Extra Library
@@ -114,4 +114,4 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <!-- prettier-ignore-end -->
 
 <!-- ALL-CONTRIBUTORS-LIST:END -->
-![forthebadge](https://forthebadge.com/images/badges/built-with-love.svg)
+
